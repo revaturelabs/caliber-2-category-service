@@ -1,4 +1,4 @@
-package com.revature.caliber.Repository;
+package com.revature.caliber.repository;
 
 import org.springframework.stereotype.Repository;
 
