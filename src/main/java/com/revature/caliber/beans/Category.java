@@ -8,7 +8,5 @@ import com.revature.caliber.services.CategoryService;
 @Component
 public class Category {
 	
-	@Autowired
-	CategoryService cs;
 
 }
