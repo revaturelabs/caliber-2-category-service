@@ -1,6 +1,7 @@
 package com.revature.caliber.beans;
 
-@Entitiy
+import org.springframework.data.annotation.Id;
+@Entity
 @Table(name="CALIBER_CATEGORY")
 public class Category {
 	@Id
