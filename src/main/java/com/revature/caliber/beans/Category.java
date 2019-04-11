@@ -3,12 +3,12 @@ package com.revature.caliber.beans;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.revature.caliber.services.CategoriesService;
+import com.revature.caliber.services.CategoryService;
 
 @Component
-public class Categories {
+public class Category {
 	
 	@Autowired
-	CategoriesService cs;
+	CategoryService cs;
 
 }
