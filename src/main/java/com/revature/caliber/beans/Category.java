@@ -1,14 +1,13 @@
 package com.revature.caliber.beans;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import com.revature.caliber.services.CategoryService;
-
-@Component
+@Entitiy
+@Table(name="CALIBER_CATEGORY")
 public class Category {
-	
-	@Autowired
-	CategoryService cs;
+	@Id
+	@Column(name="CATEGORY_ID")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int categoryId;
+	private String skillCategory;
+	private boolean isActive;
 
 }
