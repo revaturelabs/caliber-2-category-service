@@ -14,11 +14,19 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Table(name="CALIBER_CATEGORY")
 @Document(collection = "category")
 public class Category {
+	
 	@Id
 	@Column(name="CATEGORY_ID")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int categoryId;
+	
+	@Column(name="SKILL_CATEGORY")
 	private String skillCategory;
+	
+	@Column(name="IS_ACTIVE")
 	private boolean isActive;
+	
+	@Column(name="CATEGORY_OWNER")
+	private String categoryOwner;
 
 }
