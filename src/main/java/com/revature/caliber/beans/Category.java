@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Entity
 @Table(name="CATEGORY")
-@Document(collection = "category")
+//@Document(collection = "category")
 public class Category {
 	
 	@Id

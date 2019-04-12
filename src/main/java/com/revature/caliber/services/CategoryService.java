@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.revature.caliber.beans.Category;
 
-@Service
+
 public interface CategoryService {
 
 	public void createCategory(Category c);
