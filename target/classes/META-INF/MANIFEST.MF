@@ -1,7 +1,11 @@
 Manifest-Version: 1.0
 Implementation-Title: CategoryService
 Implementation-Version: 0.0.1-SNAPSHOT
+<<<<<<< HEAD
 Built-By: David
+=======
+Built-By: Peyton
+>>>>>>> c9c2710a39b66a4cb0b049d503e052e5517c962c
 Implementation-Vendor-Id: com.revature.caliber
 Build-Jdk: 1.8.0_201
 Implementation-URL: http://projects.spring.io/spring-boot/CategoryServ
