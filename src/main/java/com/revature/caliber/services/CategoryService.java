@@ -2,8 +2,6 @@ package com.revature.caliber.services;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.revature.caliber.beans.Category;
 
 
