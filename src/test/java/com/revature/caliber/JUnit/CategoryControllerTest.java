@@ -1,5 +1,5 @@
 package com.revature.caliber.JUnit;
 
-public class CategoriesServiceTests {
+public class CategoryControllerTest {
 
 }
