@@ -49,7 +49,7 @@ public class CategoriesServiceTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		c = new Category(1, "Java", true, CategoryOwner.Panel );
+		c = new Category(1, "Java", true, CategoryOwner.Panel);
 		
 		clist.addAll(Arrays.asList(new Category[] {c, new Category()}));
 		
@@ -72,6 +72,11 @@ public class CategoriesServiceTest {
 	@Test
 	public void testGetAllCategories() {
 		assertEquals("All categories should be retrieved", clist, this.cs.getAllCategories());
+	}
+	
+	@Test
+	public void testGetAllCategoriesByOwner() {
+		assertEquals("All categories with owned by panel should be retrieved", clist, this.cs.getCategoriesByCategoryOwner(CategoryOwner.Panel));
 	}
 	
 	@Test

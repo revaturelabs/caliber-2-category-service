@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.caliber.beans.Category;
+import com.revature.caliber.beans.CategoryOwner;
 import com.revature.caliber.repository.CategoryRepository;
 
 /**
@@ -60,6 +61,15 @@ public class CategoryServiceImpl implements CategoryService{
 		Category c = cr.getOne(id);
 		return c;
 	}
+	
+	/**
+	 * Retrieve a single Category, based on the Category owner
+	 */
+	@Override
+	public List<Category> getCategoriesByCategoryOwner(CategoryOwner owner) {
+		return cr.findCategoriesByCategoryOwner(owner);
+	}
+
 
 	
 	/**
@@ -82,5 +92,4 @@ public class CategoryServiceImpl implements CategoryService{
 	public void deleteCategory(Category c) {
 		cr.delete(c);		
 	}
-
 }
