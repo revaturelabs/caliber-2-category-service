@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.caliber.beans.Category;
+import com.revature.caliber.beans.CategoryOwner;
 import com.revature.caliber.services.CategoryService;
 
 
@@ -70,6 +71,25 @@ public class CategoryController {
 	{
 		log.debug("Getting category objects with id: " + id);
 		return new ResponseEntity<>(cs.getCategory(id), HttpStatus.OK);
+	}
+	
+	/**
+	 * Returns all Categories for the database by owner
+	 * 
+	 * @return cList - a List object with all the Category entities from the
+	 *         database
+	 */
+	@GetMapping(value = "all/category/owner/{owner}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
+	public ResponseEntity<List<Category>> getCategoryByOwner(@PathVariable(name = "owner") CategoryOwner owner)
+	{
+		log.debug("Getting all categories from database by owner");
+		
+		List<Category> cList = cs.getCategoriesByCategoryOwner(owner);
+		if (cList.isEmpty())
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+		return new ResponseEntity<>(cList, HttpStatus.OK);
 	}
 	
 	/**
