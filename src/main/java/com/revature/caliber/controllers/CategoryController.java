@@ -65,12 +65,15 @@ public class CategoryController {
 	 * 
 	 * @return - Returns a string of the category object with the id provided
 	 */
-	@GetMapping(value = "all/category/{categoryId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "all/category/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
-	public ResponseEntity<Category> getCategoryById(@PathVariable(name = "categoryId") Integer id)
+	public ResponseEntity<Category> getCategoryById(@PathVariable(name = "id") Integer id)
 	{
 		log.debug("Getting category objects with id: " + id);
-		return new ResponseEntity<>(cs.getCategory(id), HttpStatus.OK);
+		Category c = cs.getCategory(id);
+		if (c != null)
+			return new ResponseEntity<>(cs.getCategory(id), HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
 	/**
