@@ -58,7 +58,7 @@ public class CategoryServiceImpl implements CategoryService{
 	 */
 	@Override
 	public Category getCategory(int id) {
-		Category c = cr.getOne(id);
+		Category c = cr.findOne(id);
 		return c;
 	}
 	
