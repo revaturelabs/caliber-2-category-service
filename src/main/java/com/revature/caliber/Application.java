@@ -6,7 +6,6 @@ import java.io.IOException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.xmlpull.v1.XmlPullParserException;
 import org.apache.maven.model.Model;
@@ -21,9 +20,12 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 
 
-@EnableEurekaClient
-@EnableFeignClients
+/*
+ * Author: Javier Rodriguez
+ */
+
 @SpringBootApplication
+@EnableEurekaClient
 @EnableSwagger2
 public class Application {
 

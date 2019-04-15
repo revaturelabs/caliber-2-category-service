@@ -7,6 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/*
+ * Author: Peyton Shriver
+ */
+
 
 @Entity
 @Table(name="CATEGORY")
@@ -24,16 +28,15 @@ public class Category {
 	private boolean isActive;
 	
 	@Column(name="CATEGORY_OWNER")
-	private String categoryOwner;
+	private CategoryOwner categoryOwner;
 
 	public Category() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	
 
-	public Category(String skillCategory, boolean isActive, String categoryOwner) {
+	public Category(String skillCategory, boolean isActive, CategoryOwner categoryOwner) {
 		super();
 		this.skillCategory = skillCategory;
 		this.isActive = isActive;
@@ -42,7 +45,7 @@ public class Category {
 
 
 
-	public Category(int categoryId, String skillCategory, boolean isActive, String categoryOwner) {
+	public Category(int categoryId, String skillCategory, boolean isActive, CategoryOwner categoryOwner) {
 		super();
 		this.categoryId = categoryId;
 		this.skillCategory = skillCategory;
@@ -88,13 +91,13 @@ public class Category {
 
 
 
-	public String getCategoryOwner() {
+	public CategoryOwner getCategoryOwner() {
 		return categoryOwner;
 	}
 
 
 
-	public void setCategoryOwner(String categoryOwner) {
+	public void setCategoryOwner(CategoryOwner categoryOwner) {
 		this.categoryOwner = categoryOwner;
 	}
 
