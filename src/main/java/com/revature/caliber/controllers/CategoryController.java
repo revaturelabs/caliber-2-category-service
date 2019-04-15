@@ -46,7 +46,7 @@ public class CategoryController {
 	 * @return cList - a List object with all the Category entities from the
 	 *         database
 	 */
-	@GetMapping(value = "all/category/all", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "all/category", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<List<Category>> getAllCatagories()
 	{
@@ -72,7 +72,7 @@ public class CategoryController {
 		log.debug("Getting category objects with id: " + id);
 		Category c = cs.getCategory(id);
 		if (c != null)
-			return new ResponseEntity<>(cs.getCategory(id), HttpStatus.OK);
+			return new ResponseEntity<>(c, HttpStatus.OK);
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
@@ -103,7 +103,7 @@ public class CategoryController {
 	 * 
 	 * @return http response: CREATED
 	 */
-	@PostMapping(value="vp/category/create", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value="vp/category", consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<Category> createCategory(Category c) {
 		log.debug("Saving new category: " + c);
@@ -118,7 +118,7 @@ public class CategoryController {
 	 * 
 	 * @return - returns an http status code: NO_CONTENT
 	 */
-	@PutMapping(value="vp/category/update", consumes=MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(value="vp/category", consumes=MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<Void> updateCategory(Category c)
 	{
@@ -135,7 +135,7 @@ public class CategoryController {
 	 * 
 	 * @return returns an http status code: NO_CONTENT
 	 */
-	@DeleteMapping(value="vp/category/delete", consumes=MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping(value="vp/category", consumes=MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<Void> deleteCategory(Category c)
 	{
