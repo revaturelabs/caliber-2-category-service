@@ -58,6 +58,7 @@ public class CategoryController {
 		
 		return new ResponseEntity<>(cList, HttpStatus.OK);
 	}
+	
 	/**
 	 * Returns a string version of a single Category object from the database
 	 * 
@@ -72,7 +73,7 @@ public class CategoryController {
 		log.debug("Getting category objects with id: " + id);
 		Category c = cs.getCategory(id);
 		if (c != null)
-			return new ResponseEntity<>(cs.getCategory(id), HttpStatus.OK);
+			return new ResponseEntity<>(c, HttpStatus.OK);
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
