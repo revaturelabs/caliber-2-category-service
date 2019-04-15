@@ -24,7 +24,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 //@ComponentScan({"com.revature.caliber.services"})
 @EnableEurekaClient
-//@EnableSwagger2
+@EnableSwagger2
 public class Application {
 
 	public static void main(String[] args) {
