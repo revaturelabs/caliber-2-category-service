@@ -58,6 +58,7 @@ public class CategoryController {
 		
 		return new ResponseEntity<>(cList, HttpStatus.OK);
 	}
+	
 	/**
 	 * Returns a string version of a single Category object from the database
 	 * 
