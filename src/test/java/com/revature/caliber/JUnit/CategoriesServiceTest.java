@@ -19,6 +19,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.revature.caliber.beans.Category;
+import com.revature.caliber.beans.CategoryOwner;
 import com.revature.caliber.repository.CategoryRepository;
 import com.revature.caliber.services.CategoryServiceImpl;
 
@@ -48,7 +49,7 @@ public class CategoriesServiceTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		c = new Category(1, "Java", true, "Owner" );
+		c = new Category(1, "Java", true, CategoryOwner.Panel );
 		
 		clist.addAll(Arrays.asList(new Category[] {c, new Category()}));
 		
