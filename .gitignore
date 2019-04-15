@@ -19,6 +19,10 @@
 .springBeans
 /build
 /code
+<<<<<<< HEAD
+=======
+target/
+>>>>>>> ada44c8d793078a1b4e2e6f435fb2c9d50dd76f2
 MANIFEST.MF
 _site/
 activemq-data
