@@ -99,13 +99,7 @@ public class CategoryControllerTest {
 	
 	@Test
 	public void testGetAllCategories() {
-		
-<<<<<<< HEAD
 //		List<Category> cList = mockCategoryService.getAllCategories().getBody();
-=======
-		//List<Category> cList = mockCategoryService.getAllCategories().getBody();
->>>>>>> 6e1c50ca42c3305c4a18c385e12b7c49d44c7c55
-	}
-	
+	}	
 
 }
