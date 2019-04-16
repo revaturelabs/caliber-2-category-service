@@ -100,7 +100,7 @@ public class CategoryControllerTest {
 	@Test
 	public void testGetAllCategories() {
 		
-		List<Category> cList = mockCategoryService.getAllCategories().getBody();
+//		List<Category> cList = mockCategoryService.getAllCategories().getBody();
 	}
 	
 
