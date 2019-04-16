@@ -13,7 +13,7 @@ import com.revature.caliber.repository.CategoryRepository;
  * 
  * @author David Van Alstine
  * 
- * 		Service class for communication with repository.
+ * Service class for communication with repository.
  *
  */
 

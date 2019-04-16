@@ -76,7 +76,7 @@ public class CategoriesServiceTest {
 	
 	@Test
 	public void testGetAllCategoriesByOwner() {
-		assertEquals("All categories with owned by panel should be retrieved", clist, this.cs.getCategoriesByCategoryOwner(CategoryOwner.Panel));
+		assertEquals("All categories with owned by panel should be retrieved", clist, this.cs.getCategoriesByCategoryOwner(c.getCategoryOwner()));
 	}
 	
 	@Test
