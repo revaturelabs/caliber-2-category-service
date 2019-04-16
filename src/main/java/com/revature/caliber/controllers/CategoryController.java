@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.caliber.beans.Category;
+import com.revature.caliber.beans.CategoryOwner;
 import com.revature.caliber.services.CategoryService;
 
 
@@ -45,7 +46,7 @@ public class CategoryController {
 	 * @return cList - a List object with all the Category entities from the
 	 *         database
 	 */
-	@GetMapping(value = "all/category/all", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "all/category", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<List<Category>> getAllCatagories()
 	{
@@ -57,6 +58,7 @@ public class CategoryController {
 		
 		return new ResponseEntity<>(cList, HttpStatus.OK);
 	}
+	
 	/**
 	 * Returns a string version of a single Category object from the database
 	 * 
@@ -64,12 +66,34 @@ public class CategoryController {
 	 * 
 	 * @return - Returns a string of the category object with the id provided
 	 */
-	@GetMapping(value = "all/category/{categoryId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "all/category/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
-	public ResponseEntity<Category> getCategoryById(@PathVariable(name = "categoryId") Integer id)
+	public ResponseEntity<Category> getCategoryById(@PathVariable(name = "id") Integer id)
 	{
 		log.debug("Getting category objects with id: " + id);
-		return new ResponseEntity<>(cs.getCategory(id), HttpStatus.OK);
+		Category c = cs.getCategory(id);
+		if (c != null)
+			return new ResponseEntity<>(c, HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	/**
+	 * Returns all Categories for the database by owner
+	 * 
+	 * @return cList - a List object with all the Category entities from the
+	 *         database
+	 */
+	@GetMapping(value = "all/category/owner/{owner}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
+	public ResponseEntity<List<Category>> getCategoryByOwner(@PathVariable(name = "owner") CategoryOwner owner)
+	{
+		log.debug("Getting all categories from database by owner");
+		
+		List<Category> cList = cs.getCategoriesByCategoryOwner(owner);
+		if (cList.isEmpty())
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+		return new ResponseEntity<>(cList, HttpStatus.OK);
 	}
 	
 	/**
@@ -80,7 +104,7 @@ public class CategoryController {
 	 * 
 	 * @return http response: CREATED
 	 */
-	@PostMapping(value="vp/category/create", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value="vp/category", consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<Category> createCategory(Category c) {
 		log.debug("Saving new category: " + c);
@@ -95,7 +119,7 @@ public class CategoryController {
 	 * 
 	 * @return - returns an http status code: NO_CONTENT
 	 */
-	@PutMapping(value="vp/category/update", consumes=MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(value="vp/category", consumes=MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<Void> updateCategory(Category c)
 	{
@@ -112,7 +136,7 @@ public class CategoryController {
 	 * 
 	 * @return returns an http status code: NO_CONTENT
 	 */
-	@DeleteMapping(value="vp/category/delete", consumes=MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping(value="vp/category", consumes=MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<Void> deleteCategory(Category c)
 	{

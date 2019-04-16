@@ -42,6 +42,6 @@ public class Application {
 				.select()
 				.apis(RequestHandlerSelectors.basePackage("com.revature.caliber.controllers"))
 				.paths(PathSelectors.any())
-				.build().apiInfo(new ApiInfo("Account Service Api Documentation", "Documentation automatically generated", model.getParent().getVersion(), null, new Contact("Kelby N. Behounek", "null", "knbehounek113-"), null, null));
+				.build().apiInfo(new ApiInfo("Account Service Api Documentation", "Documentation automatically generated", model.getParent().getVersion(), null, new Contact("Javier A. Rodriguez", null, "August112641@gmail.com"), null, null));
 	}
 }

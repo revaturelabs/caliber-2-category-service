@@ -1,5 +1,7 @@
 package com.revature.caliber.beans;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,8 +16,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="CATEGORY")
-public class Category {
+public class Category implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7741944859376345541L;
+
 	@Id
 	@Column(name="CATEGORY_ID")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -127,10 +134,7 @@ public class Category {
 		Category other = (Category) obj;
 		if (categoryId != other.categoryId)
 			return false;
-		if (categoryOwner == null) {
-			if (other.categoryOwner != null)
-				return false;
-		} else if (!categoryOwner.equals(other.categoryOwner))
+		if (categoryOwner != other.categoryOwner)
 			return false;
 		if (isActive != other.isActive)
 			return false;
@@ -142,16 +146,10 @@ public class Category {
 		return true;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "Category [categoryId=" + categoryId + ", skillCategory=" + skillCategory + ", isActive=" + isActive
 				+ ", categoryOwner=" + categoryOwner + "]";
 	}
-	
-	
-	
-	
 
 }
