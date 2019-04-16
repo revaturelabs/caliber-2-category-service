@@ -8,7 +8,7 @@ import com.revature.caliber.beans.CategoryOwner;
 
 public interface CategoryService {
 
-	public void createCategory(Category c);
+	public Category createCategory(Category c);
 	
 	public List<Category> getAllCategories();
 	
@@ -16,8 +16,8 @@ public interface CategoryService {
 	
 	public List<Category> getCategoriesByCategoryOwner(CategoryOwner owner);
 	
-	public void updateCategory(Category c);
+	public Category updateCategory(Category c);
 	
-	public void deleteCategory(Category c);
+	public Boolean deleteCategory(Category c);
 	
 }

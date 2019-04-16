@@ -2,6 +2,8 @@ package com.revature.caliber.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.caliber.beans.Category;
@@ -46,7 +49,7 @@ public class CategoryController {
 	 * @return cList - a List object with all the Category entities from the
 	 *         database
 	 */
-	@GetMapping(value = "all/category", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "all/category/all", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<List<Category>> getAllCatagories()
 	{
@@ -104,12 +107,15 @@ public class CategoryController {
 	 * 
 	 * @return http response: CREATED
 	 */
-	@PostMapping(value="vp/category", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value="vp/category/create", consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
-	public ResponseEntity<Category> createCategory(Category c) {
+	public ResponseEntity<Category> createCategory(@RequestBody Category c) {
 		log.debug("Saving new category: " + c);
-		cs.createCategory(c);
-		return new ResponseEntity<>(c, HttpStatus.CREATED);
+		Category category = cs.createCategory(c);
+		if (category == null)
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		else
+			return new ResponseEntity<>(category, HttpStatus.CREATED);
 	}
 	
 	/**
@@ -119,13 +125,15 @@ public class CategoryController {
 	 * 
 	 * @return - returns an http status code: NO_CONTENT
 	 */
-	@PutMapping(value="vp/category", consumes=MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(value="vp/category/update", consumes=MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
-	public ResponseEntity<Void> updateCategory(Category c)
+	public ResponseEntity<Category> updateCategory(@Valid @RequestBody Category c)
 	{
 		log.debug("Updating category: " + c);
-		cs.updateCategory(c);
-		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		Category category = cs.updateCategory(c);
+		if (category == null)
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>(category, HttpStatus.NO_CONTENT);
 	}
 
 	/**
@@ -136,12 +144,14 @@ public class CategoryController {
 	 * 
 	 * @return returns an http status code: NO_CONTENT
 	 */
-	@DeleteMapping(value="vp/category", consumes=MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping(value="vp/category/delete", consumes=MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
-	public ResponseEntity<Void> deleteCategory(Category c)
+	public ResponseEntity<Boolean> deleteCategory(@Valid @RequestBody Category c)
 	{
 		log.debug("Deleting category: " + c);
-		cs.deleteCategory(c);
-		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		if (cs.deleteCategory(c))
+			return new ResponseEntity<>(HttpStatus.ACCEPTED);
+		else
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
 }
