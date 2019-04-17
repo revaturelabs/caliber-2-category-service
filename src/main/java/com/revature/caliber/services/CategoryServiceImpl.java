@@ -31,9 +31,11 @@ public class CategoryServiceImpl implements CategoryService{
 	 * 
 	 */
 	@Override
-	public void createCategory(Category c) {
-		cr.save(c);
-		
+	public Category createCategory(Category c) {
+		if(cr.findOne(c.getCategoryId()) == null)
+			return cr.save(c);
+		else
+			return null;
 	}
 
 	
@@ -77,9 +79,10 @@ public class CategoryServiceImpl implements CategoryService{
 	 * @param - c - the Category item to be updated
 	 */
 	@Override
-	public void updateCategory(Category c) {
-		if(!cr.findOne( (Integer) c.getCategoryId()).equals(null))
-			cr.save(c);		
+	public Category updateCategory(Category c) {
+		if(!(cr.findOne(c.getCategoryId()) == null))
+			return cr.save(c);
+		return null;
 	}
 
 	
@@ -89,7 +92,15 @@ public class CategoryServiceImpl implements CategoryService{
 	 * @param - c - the Category to to be deleted
 	 */
 	@Override
-	public void deleteCategory(Category c) {
-		cr.delete(c);		
+	public Boolean deleteCategory(Category c) {
+		try
+		{
+			cr.delete(c);
+			return true;
+		}
+		catch(IllegalArgumentException e)
+		{
+		}
+		return false;
 	}
 }
