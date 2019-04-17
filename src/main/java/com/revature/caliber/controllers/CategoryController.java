@@ -46,7 +46,7 @@ public class CategoryController {
 	 * @return cList - a List object with all the Category entities from the
 	 *         database
 	 */
-	@GetMapping(value = "all/category", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "all/category/all", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<List<Category>> getAllCatagories()
 	{
@@ -119,13 +119,13 @@ public class CategoryController {
 	 * 
 	 * @return - returns an http status code: NO_CONTENT
 	 */
-	@PutMapping(value="vp/category", consumes=MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(value="vp/category/delete", consumes=MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<Void> updateCategory(Category c)
 	{
 		log.debug("Updating category: " + c);
 		cs.updateCategory(c);
-		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	/**
@@ -136,12 +136,12 @@ public class CategoryController {
 	 * 
 	 * @return returns an http status code: NO_CONTENT
 	 */
-	@DeleteMapping(value="vp/category", consumes=MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping(value="vp/category/delete", consumes=MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<Void> deleteCategory(Category c)
 	{
 		log.debug("Deleting category: " + c);
 		cs.deleteCategory(c);
-		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

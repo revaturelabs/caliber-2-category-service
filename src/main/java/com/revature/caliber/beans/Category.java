@@ -26,13 +26,13 @@ public class Category implements Serializable {
 	@Id
 	@Column(name="CATEGORY_ID")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int categoryId;
+	private Integer categoryId;
 	
 	@Column(name="SKILL_CATEGORY")
 	private String skillCategory;
 	
 	@Column(name="IS_ACTIVE")
-	private boolean isActive;
+	private Boolean isActive;
 	
 	@Column(name="CATEGORY_OWNER")
 	private CategoryOwner categoryOwner;
@@ -43,7 +43,7 @@ public class Category implements Serializable {
 	
 	
 
-	public Category(String skillCategory, boolean isActive, CategoryOwner categoryOwner) {
+	public Category(String skillCategory, Boolean isActive, CategoryOwner categoryOwner) {
 		super();
 		this.skillCategory = skillCategory;
 		this.isActive = isActive;
@@ -52,7 +52,7 @@ public class Category implements Serializable {
 
 
 
-	public Category(int categoryId, String skillCategory, boolean isActive, CategoryOwner categoryOwner) {
+	public Category(Integer categoryId, String skillCategory, Boolean isActive, CategoryOwner categoryOwner) {
 		super();
 		this.categoryId = categoryId;
 		this.skillCategory = skillCategory;
@@ -62,13 +62,13 @@ public class Category implements Serializable {
 
 
 
-	public int getCategoryId() {
+	public Integer getCategoryId() {
 		return categoryId;
 	}
 
 
 
-	public void setCategoryId(int categoryId) {
+	public void setCategoryId(Integer categoryId) {
 		this.categoryId = categoryId;
 	}
 
@@ -86,13 +86,13 @@ public class Category implements Serializable {
 
 
 
-	public boolean isActive() {
+	public Boolean isActive() {
 		return isActive;
 	}
 
 
 
-	public void setActive(boolean isActive) {
+	public void setActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
 
