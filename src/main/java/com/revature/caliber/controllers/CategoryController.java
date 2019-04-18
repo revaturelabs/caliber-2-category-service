@@ -112,10 +112,11 @@ public class CategoryController {
 	public ResponseEntity<Category> createCategory(@RequestBody Category c) {
 		log.debug("Saving new category: " + c);
 		Category category = cs.createCategory(c);
-		if (category == null)
+		if (category == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		else
+		} else {
 			return new ResponseEntity<>(category, HttpStatus.CREATED);
+		}
 	}
 	
 	/**
@@ -131,8 +132,9 @@ public class CategoryController {
 	{
 		log.debug("Updating category: " + c);
 		Category category = cs.updateCategory(c);
-		if (category == null)
+		if (category == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
 		return new ResponseEntity<>(category, HttpStatus.NO_CONTENT);
 	}
 
@@ -149,9 +151,10 @@ public class CategoryController {
 	public ResponseEntity<Boolean> deleteCategory(@Valid @RequestBody Category c)
 	{
 		log.debug("Deleting category: " + c);
-		if (cs.deleteCategory(c))
+		if (cs.deleteCategory(c)) {
 			return new ResponseEntity<>(HttpStatus.ACCEPTED);
-		else
+		} else {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
 	}
 }

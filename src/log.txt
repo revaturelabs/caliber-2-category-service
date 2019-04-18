@@ -1,64 +1,41 @@
-2019-04-18 10:55:06 DEBUG CategoryControllerTest:187 - Testing HTTP create category
-2019-04-18 10:55:08 DEBUG CategoryController:113 - Saving new category: Category [categoryId=3, skillCategory=Hibernate, isActive=false, categoryOwner=Panel]
-2019-04-18 10:55:09 DEBUG CategoryControllerTest:221 - Testing HTTP delete category
-2019-04-18 10:55:09 DEBUG CategoryController:151 - Deleting category: Category [categoryId=4, skillCategory=SQL, isActive=true, categoryOwner=Panel]
-2019-04-18 10:55:09 DEBUG CategoryControllerTest:126 - Test retrieving all categories
-2019-04-18 10:55:09 DEBUG CategoryControllerTest:204 - Testing HTTP update category
-2019-04-18 10:55:09 DEBUG CategoryController:132 - Updating category: Category [categoryId=2, skillCategory=Spring, isActive=true, categoryOwner=Panel]
-2019-04-18 10:55:09 DEBUG CategoryControllerTest:170 - Testing HTTP get category by id
-2019-04-18 10:55:09 DEBUG CategoryController:76 - Getting category objects with id: 3
-2019-04-18 10:55:09 DEBUG CategoryControllerTest:110 - Test updating a category
-2019-04-18 10:55:09 DEBUG CategoryControllerTest:102 - Test creating a category
-2019-04-18 10:55:09 DEBUG CategoryControllerTest:153 - Testing HTTP get all categories
-2019-04-18 10:55:09 DEBUG CategoryController:56 - Getting all categories from database
-2019-04-18 10:55:09 DEBUG CategoryControllerTest:118 - Tst deleting a category
-2019-04-18 10:55:09 DEBUG CategoryControllerTest:140 - Test retrieving category by id
-2019-04-18 10:55:09 DEBUG CategoryController:76 - Getting category objects with id: 3
-2019-04-18 10:57:58 DEBUG CategoryControllerTest:187 - Testing HTTP create category
-2019-04-18 10:57:59 DEBUG CategoryControllerTest:187 - Testing HTTP create category
-2019-04-18 10:58:00 DEBUG CategoryController:113 - Saving new category: Category [categoryId=3, skillCategory=Hibernate, isActive=false, categoryOwner=Panel]
-2019-04-18 10:58:00 DEBUG CategoryController:113 - Saving new category: Category [categoryId=3, skillCategory=Hibernate, isActive=false, categoryOwner=Panel]
-2019-04-18 10:58:03 DEBUG CategoryControllerTest:221 - Testing HTTP delete category
-2019-04-18 10:58:03 DEBUG CategoryControllerTest:221 - Testing HTTP delete category
-2019-04-18 10:58:03 DEBUG CategoryController:151 - Deleting category: Category [categoryId=3, skillCategory=Hibernate, isActive=false, categoryOwner=Panel]
-2019-04-18 10:58:03 DEBUG CategoryController:151 - Deleting category: Category [categoryId=3, skillCategory=Hibernate, isActive=false, categoryOwner=Panel]
-2019-04-18 10:58:03 DEBUG CategoryControllerTest:126 - Test retrieving all categories
-2019-04-18 10:58:03 DEBUG CategoryControllerTest:126 - Test retrieving all categories
-2019-04-18 10:58:03 DEBUG CategoryControllerTest:204 - Testing HTTP update category
-2019-04-18 10:58:03 DEBUG CategoryControllerTest:204 - Testing HTTP update category
-2019-04-18 10:58:03 DEBUG CategoryController:132 - Updating category: Category [categoryId=3, skillCategory=Hibernate, isActive=false, categoryOwner=Panel]
-2019-04-18 10:58:03 DEBUG CategoryController:132 - Updating category: Category [categoryId=3, skillCategory=Hibernate, isActive=false, categoryOwner=Panel]
-2019-04-18 10:58:04 DEBUG CategoryControllerTest:170 - Testing HTTP get category by id
-2019-04-18 10:58:04 DEBUG CategoryControllerTest:170 - Testing HTTP get category by id
-2019-04-18 10:58:04 DEBUG CategoryController:76 - Getting category objects with id: 3
-2019-04-18 10:58:04 DEBUG CategoryController:76 - Getting category objects with id: 3
-2019-04-18 10:58:04 DEBUG CategoryControllerTest:110 - Test updating a category
-2019-04-18 10:58:04 DEBUG CategoryControllerTest:110 - Test updating a category
-2019-04-18 10:58:04 DEBUG CategoryControllerTest:102 - Test creating a category
-2019-04-18 10:58:04 DEBUG CategoryControllerTest:153 - Testing HTTP get all categories
-2019-04-18 10:58:04 DEBUG CategoryControllerTest:102 - Test creating a category
-2019-04-18 10:58:04 DEBUG CategoryControllerTest:153 - Testing HTTP get all categories
-2019-04-18 10:58:04 DEBUG CategoryController:56 - Getting all categories from database
-2019-04-18 10:58:04 DEBUG CategoryController:56 - Getting all categories from database
-2019-04-18 10:58:05 DEBUG CategoryControllerTest:118 - Tst deleting a category
-2019-04-18 10:58:05 DEBUG CategoryControllerTest:140 - Test retrieving category by id
-2019-04-18 10:58:05 DEBUG CategoryController:76 - Getting category objects with id: 3
-2019-04-18 10:58:05 DEBUG CategoryControllerTest:118 - Tst deleting a category
-2019-04-18 10:58:05 DEBUG CategoryControllerTest:140 - Test retrieving category by id
-2019-04-18 10:58:05 DEBUG CategoryController:76 - Getting category objects with id: 3
-2019-04-18 11:16:40 DEBUG CategoryControllerTest:187 - Testing HTTP create category
-2019-04-18 11:16:41 DEBUG CategoryController:113 - Saving new category: Category [categoryId=1, skillCategory=Java, isActive=true, categoryOwner=Training]
-2019-04-18 11:16:41 DEBUG CategoryControllerTest:221 - Testing HTTP delete category
-2019-04-18 11:16:42 DEBUG CategoryController:151 - Deleting category: Category [categoryId=1, skillCategory=Java, isActive=true, categoryOwner=Training]
-2019-04-18 11:16:42 DEBUG CategoryControllerTest:126 - Test retrieving all categories
-2019-04-18 11:16:42 DEBUG CategoryControllerTest:204 - Testing HTTP update category
-2019-04-18 11:16:42 DEBUG CategoryController:132 - Updating category: Category [categoryId=1, skillCategory=Java, isActive=true, categoryOwner=Training]
-2019-04-18 11:16:42 DEBUG CategoryControllerTest:170 - Testing HTTP get category by id
-2019-04-18 11:16:42 DEBUG CategoryController:76 - Getting category objects with id: 3
-2019-04-18 11:16:42 DEBUG CategoryControllerTest:110 - Test updating a category
-2019-04-18 11:16:42 DEBUG CategoryControllerTest:102 - Test creating a category
-2019-04-18 11:16:42 DEBUG CategoryControllerTest:153 - Testing HTTP get all categories
-2019-04-18 11:16:42 DEBUG CategoryController:56 - Getting all categories from database
-2019-04-18 11:16:42 DEBUG CategoryControllerTest:118 - Tst deleting a category
-2019-04-18 11:16:42 DEBUG CategoryControllerTest:140 - Test retrieving category by id
-2019-04-18 11:16:42 DEBUG CategoryController:76 - Getting category objects with id: 3
+2019-04-18 15:48:01 DEBUG CategoryControllerTest:227 - Testing HTTP create category
+2019-04-18 15:48:03 DEBUG CategoryController:113 - Saving new category: Category [categoryId=1, skillCategory=Java, isActive=true, categoryOwner=Training]
+2019-04-18 15:48:04 DEBUG CategoryControllerTest:261 - Testing HTTP delete category
+2019-04-18 15:48:04 DEBUG CategoryController:151 - Deleting category: Category [categoryId=1, skillCategory=Java, isActive=true, categoryOwner=Training]
+2019-04-18 15:48:04 DEBUG CategoryControllerTest:138 - Test retrieving all categories
+2019-04-18 15:48:04 DEBUG CategoryControllerTest:244 - Testing HTTP update category
+2019-04-18 15:48:04 DEBUG CategoryController:132 - Updating category: Category [categoryId=1, skillCategory=Java, isActive=true, categoryOwner=Training]
+2019-04-18 15:48:04 DEBUG CategoryControllerTest:193 - Testing HTTP get category by id
+2019-04-18 15:48:04 DEBUG CategoryController:76 - Getting category objects with id: 3
+2019-04-18 15:48:04 DEBUG CategoryControllerTest:160 - Test retrieving categories by owner
+2019-04-18 15:48:04 DEBUG CategoryControllerTest:122 - Test updating a category
+2019-04-18 15:48:04 DEBUG CategoryControllerTest:114 - Test creating a category
+2019-04-18 15:48:05 DEBUG CategoryControllerTest:176 - Testing HTTP get all categories
+2019-04-18 15:48:05 DEBUG CategoryController:56 - Getting all categories from database
+2019-04-18 15:48:05 DEBUG CategoryControllerTest:130 - Tst deleting a category
+2019-04-18 15:48:05 DEBUG CategoryControllerTest:152 - Test retrieving category by id
+2019-04-18 15:48:05 DEBUG CategoryController:76 - Getting category objects with id: 3
+2019-04-18 15:48:05 DEBUG CategoryControllerTest:210 - Testing HTTP get category by id
+2019-04-18 15:48:05 DEBUG CategoryController:93 - Getting all categories from database by owner
+2019-04-18 15:59:03 DEBUG CategoryControllerTest:227 - Testing HTTP create category
+2019-04-18 15:59:04 DEBUG CategoryController:113 - Saving new category: Category [categoryId=1, skillCategory=Java, isActive=true, categoryOwner=Training]
+2019-04-18 15:59:05 DEBUG CategoryControllerTest:261 - Testing HTTP delete category
+2019-04-18 15:59:05 DEBUG CategoryController:153 - Deleting category: Category [categoryId=1, skillCategory=Java, isActive=true, categoryOwner=Training]
+2019-04-18 15:59:06 DEBUG CategoryControllerTest:138 - Test retrieving all categories
+2019-04-18 15:59:06 DEBUG CategoryControllerTest:244 - Testing HTTP update category
+2019-04-18 15:59:06 DEBUG CategoryController:133 - Updating category: Category [categoryId=1, skillCategory=Java, isActive=true, categoryOwner=Training]
+2019-04-18 15:59:06 DEBUG CategoryControllerTest:193 - Testing HTTP get category by id
+2019-04-18 15:59:06 DEBUG CategoryController:76 - Getting category objects with id: 3
+2019-04-18 15:59:06 DEBUG CategoryControllerTest:160 - Test retrieving categories by owner
+2019-04-18 15:59:06 DEBUG CategoryControllerTest:122 - Test updating a category
+2019-04-18 15:59:06 DEBUG CategoryControllerTest:114 - Test creating a category
+2019-04-18 15:59:06 DEBUG CategoryControllerTest:176 - Testing HTTP get all categories
+2019-04-18 15:59:06 DEBUG CategoryController:56 - Getting all categories from database
+2019-04-18 15:59:06 DEBUG CategoryControllerTest:130 - Tst deleting a category
+2019-04-18 15:59:06 DEBUG CategoryControllerTest:152 - Test retrieving category by id
+2019-04-18 15:59:06 DEBUG CategoryController:76 - Getting category objects with id: 3
+2019-04-18 15:59:06 DEBUG CategoryControllerTest:210 - Testing HTTP get category by id
+2019-04-18 15:59:06 DEBUG CategoryController:93 - Getting all categories from database by owner
+2019-04-18 16:02:32 DEBUG CategoryControllerTest:227 - Testing HTTP create category
+2019-04-18 16:02:33 DEBUG CategoryController:113 - Saving new category: Category [categoryId=1, skillCategory=Java, isActive=true, categoryOwner=Training]
+2019-04-18 16:02:34 DEBUG CategoryControllerTest:261 - Testing HTTP delete category

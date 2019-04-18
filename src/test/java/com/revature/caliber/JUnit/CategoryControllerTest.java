@@ -52,19 +52,23 @@ public class CategoryControllerTest {
 	@LocalServerPort
 	private int port;
 	
-	private static Category c1 = new Category(1, "Java", true, CategoryOwner.Training);
-	private static Category c2 = new Category(2, "Spring", true, CategoryOwner.Panel);
-	private static Category c3 = new Category(3, "Hibernate", false, CategoryOwner.Panel);
-	private static Category c4 = new Category(4, "SQL", true, CategoryOwner.Panel);
-	private static Category c5 = new Category(5, "Microservices", false, CategoryOwner.Training);
+	private static final Category c1 = new Category(1, "Java", true, CategoryOwner.Training);
+	private static final Category c2 = new Category(2, "Spring", true, CategoryOwner.Panel);
+	private static final Category c3 = new Category(3, "Hibernate", false, CategoryOwner.Panel);
+	private static final Category c4 = new Category(4, "SQL", true, CategoryOwner.Panel);
+	private static final Category c5 = new Category(5, "Microservices", false, CategoryOwner.Training);
 
 	static Category category;
 	static List<Category> categories;
+	static List<Category> trainingCategories;
+	static List<Category> panelCategories;
 	
 	@BeforeClass
 	public static void classSetup() {
 		RestAssured.port = 9000;
 		categories = new ArrayList<Category>();
+		trainingCategories = new ArrayList<Category>();
+		panelCategories = new ArrayList<Category>();
 	}
 	
 	@AfterClass
@@ -81,8 +85,16 @@ public class CategoryControllerTest {
 		categories.add(c4);
 		categories.add(c5);
 		
+		trainingCategories.add(c1);
+		trainingCategories.add(c5);
+		
+		panelCategories.add(c2);
+		panelCategories.add(c3);
+		panelCategories.add(c4);
+		
 		org.mockito.Mockito.when(mockCategoryService.getAllCategories()).thenReturn(categories);
-//		org.mockito.Mockito.when(mockCategoryService.getCategoriesByCategoryOwner(CategoryOwner.Panel)).thenReturn(categories());
+		org.mockito.Mockito.when(mockCategoryService.getCategoriesByCategoryOwner(CategoryOwner.Training)).thenReturn(trainingCategories);
+		org.mockito.Mockito.when(mockCategoryService.getCategoriesByCategoryOwner(CategoryOwner.Panel)).thenReturn(panelCategories);
 		
 		org.mockito.Mockito.when(mockCategoryService.getCategory(1)).thenReturn(c1);
 		org.mockito.Mockito.when(mockCategoryService.getCategory(2)).thenReturn(c2);
@@ -145,8 +157,19 @@ public class CategoryControllerTest {
 	
 	@Test
 	public void testGetCategoriesByOwner() {
+		log.debug("Test retrieving categories by owner");
 		
-	}
+		List<Category> ctList = mockCategoryService.getCategoriesByCategoryOwner(CategoryOwner.Training);
+		assertEquals("Expected first category to be "+ categories.get(0).getSkillCategory(),categories.get(0).getSkillCategory(),ctList.get(0).getSkillCategory());
+		assertEquals("Expected second category to be "+ categories.get(4).getSkillCategory(),categories.get(4).getSkillCategory(),ctList.get(1).getSkillCategory());
+		
+		List<Category> cpList = mockCategoryService.getCategoriesByCategoryOwner(CategoryOwner.Panel);
+		assertEquals("Expected first category to be "+ categories.get(1).getSkillCategory(),categories.get(1).getSkillCategory(),cpList.get(0).getSkillCategory());
+		assertEquals("Expected second category to be "+ categories.get(2).getSkillCategory(),categories.get(2).getSkillCategory(),cpList.get(1).getSkillCategory());
+		assertEquals("Expected third category to be "+ categories.get(3).getSkillCategory(),categories.get(3).getSkillCategory(),cpList.get(2).getSkillCategory());
+
+	}	
+
 	
 	@Test
 	public void testGetAllReturnsOKStatusCode() {
@@ -176,6 +199,23 @@ public class CategoryControllerTest {
 			when().
 		
 			get("/all/category/3").
+		
+			then().
+		
+			statusCode(200);
+	}
+	
+	@Test
+	public void testGetCategoryByOwnerReturnsOKStatusCode() {
+		log.debug("Testing HTTP get category by id");
+		
+		given().
+		
+			standaloneSetup(mockCategoryController).contentType(ContentType.JSON).
+		
+			when().
+		
+			get("/all/category/owner/Panel").
 		
 			then().
 		
@@ -230,7 +270,7 @@ public class CategoryControllerTest {
 	
 			then().
 	
-			statusCode(204);
+			statusCode(202);
 	}
 
 }
