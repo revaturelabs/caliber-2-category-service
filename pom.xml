@@ -96,6 +96,11 @@
       		<artifactId>rest-assured</artifactId>
       		<scope>test</scope>
 		</dependency>
+			<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>spring-mock-mvc</artifactId>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.maven</groupId>
 			<artifactId>maven-model</artifactId>

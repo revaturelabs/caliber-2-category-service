@@ -1,5 +1,6 @@
 package com.revature.caliber.JUnit;
 
+import static io.restassured.module.mockmvc.RestAssuredMockMvc.given;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
 
@@ -17,7 +18,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.revature.caliber.Application;
@@ -27,6 +27,7 @@ import com.revature.caliber.controllers.CategoryController;
 import com.revature.caliber.services.CategoryService;
 
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 
 /**
  * @author David Van Alstine
@@ -145,6 +146,91 @@ public class CategoryControllerTest {
 	@Test
 	public void testGetCategoriesByOwner() {
 		
+	}
+	
+	@Test
+	public void testGetAllReturnsOKStatusCode() {
+		log.debug("Testing HTTP get all categories");
+		
+		given().
+		
+			standaloneSetup(mockCategoryController).contentType(ContentType.JSON).
+			
+			when().
+			
+			get("/all/category/all").
+			
+			then().
+			
+			statusCode(200);
+	}
+	
+	@Test
+	public void testGetCategoryByIdReturnsOKStatusCode() {
+		log.debug("Testing HTTP get category by id");
+		
+		given().
+		
+			standaloneSetup(mockCategoryController).contentType(ContentType.JSON).
+		
+			when().
+		
+			get("/all/category/3").
+		
+			then().
+		
+			statusCode(200);
+	}
+	
+	@Test
+	public void testCreateCategoryReturnsCreatedStatusCode() {
+		log.debug("Testing HTTP create category");
+		
+		given().
+		
+			standaloneSetup(mockCategoryController).contentType(ContentType.JSON).body(c1).
+		
+			when().
+		
+			post("/vp/category/create").
+		
+			then().
+		
+			statusCode(201);
+	}
+	
+	@Test
+	public void testUpdateCategoryReturnsCreatedStatusCode() {
+		log.debug("Testing HTTP update category");
+		
+		given().
+		
+			standaloneSetup(mockCategoryController).contentType(ContentType.JSON).body(c1).
+	
+			when().
+	
+			put("/vp/category/update").
+	
+			then().
+	
+			statusCode(204);		
+	}
+	
+	@Test
+	public void testDeleteReturnsCreatedStatusCode() {
+		log.debug("Testing HTTP delete category");
+		
+		given().
+		
+			standaloneSetup(mockCategoryController).contentType(ContentType.JSON).body(c1).
+	
+			when().
+	
+			delete("/vp/category/delete").
+	
+			then().
+	
+			statusCode(204);
 	}
 
 }
