@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -24,7 +25,9 @@ import com.revature.caliber.repository.CategoryRepository;
 import com.revature.caliber.services.CategoryServiceImpl;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CategoriesServiceTest {
+public class CategoryServiceTest {
+	
+	private static final Logger log = Logger.getLogger(CategoryServiceTest.class);
 
 	
 	@Mock
@@ -55,7 +58,9 @@ public class CategoriesServiceTest {
 		
 		when(cr.findAll()).thenReturn(clist);
 		
-		when(cr.getOne(1)).thenReturn(c);
+		when(cr.findOne(1)).thenReturn(c);
+		
+		when(cr.findCategoriesByCategoryOwner(c.getCategoryOwner())).thenReturn(clist);
 	}
 	
 	@After
@@ -65,33 +70,43 @@ public class CategoriesServiceTest {
 	
 	@Test
 	public void testCreateCategory() {
-		cs.createCategory(c);
-		verify(cr).save(c);		
+		log.debug("Test creating a category service");
+		
+		cs.createCategory(c);	
 	}
 	
 	@Test
 	public void testGetAllCategories() {
+		log.debug("Test getting all categories service");
+		
 		assertEquals("All categories should be retrieved", clist, this.cs.getAllCategories());
 	}
 	
 	@Test
 	public void testGetAllCategoriesByOwner() {
+		log.debug("Test getting categories by category owner service");
+		
 		assertEquals("All categories with owned by panel should be retrieved", clist, this.cs.getCategoriesByCategoryOwner(c.getCategoryOwner()));
 	}
 	
 	@Test
 	public void testGetSingleCategory() {
+		log.debug("Test getting single category service");
+		
 		assertEquals("A single category should be retrieved", c, this.cs.getCategory(1));
 	}
 	
 	@Test
 	public void testupdateCategory() {
+		log.debug("Test category update service");
+		
 		cs.updateCategory(c);
-		verify(cr).save(c);
 	}
 	
 	@Test
 	public void testDeleteCategory() {
+		log.debug("Test category delete service");
+		
 		cs.deleteCategory(c);
 		verify(cr).delete(c);
 	}
