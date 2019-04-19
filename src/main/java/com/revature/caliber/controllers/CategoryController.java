@@ -128,8 +128,7 @@ public class CategoryController {
 	 */
 	@PutMapping(value="vp/category/update", consumes=MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
-	public ResponseEntity<Category> updateCategory(@Valid @RequestBody Category c)
-	{
+	public ResponseEntity<Category> updateCategory(@Valid @RequestBody Category c) {
 		log.debug("Updating category: " + c);
 		Category category = cs.updateCategory(c);
 		if (category == null) {
@@ -151,7 +150,7 @@ public class CategoryController {
 	public ResponseEntity<Boolean> deleteCategory(@Valid @RequestBody Category c)
 	{
 		log.debug("Deleting category: " + c);
-		if (cs.deleteCategory(c)) {
+		if (cs.deleteCategory(c) != null) {
 			return new ResponseEntity<>(HttpStatus.ACCEPTED);
 		} else {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

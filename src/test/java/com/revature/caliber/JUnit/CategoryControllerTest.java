@@ -16,11 +16,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.boot.context.embedded.LocalServerPort;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.mockito.runners.MockitoJUnitRunner;
 
-import com.revature.caliber.Application;
 import com.revature.caliber.beans.Category;
 import com.revature.caliber.beans.CategoryOwner;
 import com.revature.caliber.controllers.CategoryController;
@@ -37,8 +34,8 @@ import io.restassured.http.ContentType;
  */
 
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@RunWith(MockitoJUnitRunner.class)
+//@SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class CategoryControllerTest {
 	
 	private static final Logger log = Logger.getLogger(CategoryControllerTest.class);
@@ -49,16 +46,15 @@ public class CategoryControllerTest {
 	@InjectMocks
 	static CategoryController mockCategoryController;
 	
-	@LocalServerPort
-	private int port;
 	
 	private static final Category c1 = new Category(1, "Java", true, CategoryOwner.Training);
-	private static final Category c2 = new Category(2, "Spring", true, CategoryOwner.Panel);
-	private static final Category c3 = new Category(3, "Hibernate", false, CategoryOwner.Panel);
-	private static final Category c4 = new Category(4, "SQL", true, CategoryOwner.Panel);
-	private static final Category c5 = new Category(5, "Microservices", false, CategoryOwner.Training);
+	private static final Category c2 = new Category(18, "Hibernate", true, CategoryOwner.Training);
+	private static final Category c3 = new Category(19, "Spring", true, CategoryOwner.Training);
+	private static final Category c4 = new Category(26, "Python", true, CategoryOwner.Panel);
+	private static final Category c5 = new Category(36, "Docker", true, CategoryOwner.Panel);
+	
+	
 
-	static Category category;
 	static List<Category> categories;
 	static List<Category> trainingCategories;
 	static List<Category> panelCategories;
@@ -66,9 +62,9 @@ public class CategoryControllerTest {
 	@BeforeClass
 	public static void classSetup() {
 		RestAssured.port = 9000;
-		categories = new ArrayList<Category>();
-		trainingCategories = new ArrayList<Category>();
-		panelCategories = new ArrayList<Category>();
+		categories = new ArrayList<>();
+		trainingCategories = new ArrayList<>();
+		panelCategories = new ArrayList<>();
 	}
 	
 	@AfterClass
@@ -86,21 +82,21 @@ public class CategoryControllerTest {
 		categories.add(c5);
 		
 		trainingCategories.add(c1);
-		trainingCategories.add(c5);
+		trainingCategories.add(c2);
+		trainingCategories.add(c3);
 		
-		panelCategories.add(c2);
-		panelCategories.add(c3);
 		panelCategories.add(c4);
+		panelCategories.add(c5);
 		
 		org.mockito.Mockito.when(mockCategoryService.getAllCategories()).thenReturn(categories);
 		org.mockito.Mockito.when(mockCategoryService.getCategoriesByCategoryOwner(CategoryOwner.Training)).thenReturn(trainingCategories);
 		org.mockito.Mockito.when(mockCategoryService.getCategoriesByCategoryOwner(CategoryOwner.Panel)).thenReturn(panelCategories);
 		
 		org.mockito.Mockito.when(mockCategoryService.getCategory(1)).thenReturn(c1);
-		org.mockito.Mockito.when(mockCategoryService.getCategory(2)).thenReturn(c2);
-		org.mockito.Mockito.when(mockCategoryService.getCategory(3)).thenReturn(c3);
-		org.mockito.Mockito.when(mockCategoryService.getCategory(4)).thenReturn(c4);
-		org.mockito.Mockito.when(mockCategoryService.getCategory(5)).thenReturn(c5);
+		org.mockito.Mockito.when(mockCategoryService.getCategory(18)).thenReturn(c2);
+		org.mockito.Mockito.when(mockCategoryService.getCategory(19)).thenReturn(c3);
+		org.mockito.Mockito.when(mockCategoryService.getCategory(26)).thenReturn(c4);
+		org.mockito.Mockito.when(mockCategoryService.getCategory(36)).thenReturn(c5);
 			
 	}
 	
@@ -127,7 +123,7 @@ public class CategoryControllerTest {
 	
 	@Test
 	public void testDeleteCategory() {
-		log.debug("Tst deleting a category");
+		log.debug("Test deleting a category");
 		
 		mockCategoryService.deleteCategory(c4);
 		verify(mockCategoryService).deleteCategory(c4);
@@ -151,7 +147,7 @@ public class CategoryControllerTest {
 	public void testGetCategoryById() {
 		log.debug("Test retrieving category by id");
 		
-		Category mockCategory = mockCategoryController.getCategoryById(3).getBody();
+		Category mockCategory = mockCategoryController.getCategoryById(19).getBody();
 		assertEquals("Expected category to be " + categories.get(2), categories.get(2), mockCategory);
 	}
 	
@@ -159,14 +155,14 @@ public class CategoryControllerTest {
 	public void testGetCategoriesByOwner() {
 		log.debug("Test retrieving categories by owner");
 		
+		List<Category> cpList = mockCategoryService.getCategoriesByCategoryOwner(CategoryOwner.Panel);
+		assertEquals("Expected first category to be "+ categories.get(3).getSkillCategory(),categories.get(3).getSkillCategory(),cpList.get(0).getSkillCategory());
+		assertEquals("Expected second category to be "+ categories.get(4).getSkillCategory(),categories.get(4).getSkillCategory(),cpList.get(1).getSkillCategory());
+		
 		List<Category> ctList = mockCategoryService.getCategoriesByCategoryOwner(CategoryOwner.Training);
 		assertEquals("Expected first category to be "+ categories.get(0).getSkillCategory(),categories.get(0).getSkillCategory(),ctList.get(0).getSkillCategory());
-		assertEquals("Expected second category to be "+ categories.get(4).getSkillCategory(),categories.get(4).getSkillCategory(),ctList.get(1).getSkillCategory());
-		
-		List<Category> cpList = mockCategoryService.getCategoriesByCategoryOwner(CategoryOwner.Panel);
-		assertEquals("Expected first category to be "+ categories.get(1).getSkillCategory(),categories.get(1).getSkillCategory(),cpList.get(0).getSkillCategory());
-		assertEquals("Expected second category to be "+ categories.get(2).getSkillCategory(),categories.get(2).getSkillCategory(),cpList.get(1).getSkillCategory());
-		assertEquals("Expected third category to be "+ categories.get(3).getSkillCategory(),categories.get(3).getSkillCategory(),cpList.get(2).getSkillCategory());
+		assertEquals("Expected second category to be "+ categories.get(1).getSkillCategory(),categories.get(1).getSkillCategory(),ctList.get(1).getSkillCategory());
+		assertEquals("Expected third category to be "+ categories.get(2).getSkillCategory(),categories.get(2).getSkillCategory(),ctList.get(2).getSkillCategory());
 
 	}	
 
@@ -198,7 +194,7 @@ public class CategoryControllerTest {
 		
 			when().
 		
-			get("/all/category/3").
+			get("/all/category/1").
 		
 			then().
 		
@@ -240,7 +236,7 @@ public class CategoryControllerTest {
 	}
 	
 	@Test
-	public void testUpdateCategoryReturnsCreatedStatusCode() {
+	public void testUpdateCategoryReturnsNoContentStatusCode() {
 		log.debug("Testing HTTP update category");
 		
 		given().
@@ -256,8 +252,9 @@ public class CategoryControllerTest {
 			statusCode(204);		
 	}
 	
+	
 	@Test
-	public void testDeleteReturnsCreatedStatusCode() {
+	public void testDeleteReturnsAcceptedStatusCode() {
 		log.debug("Testing HTTP delete category");
 		
 		given().

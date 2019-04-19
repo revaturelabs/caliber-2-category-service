@@ -25,8 +25,6 @@ public class CategoryServiceImpl implements CategoryService{
 	
 	@Autowired
 	CategoryRepository cr;
-
-	private static Logger log = Logger.getLogger(CategoryServiceImpl.class);
 	
 	/**
 	 * Create a new category to be added to the database
@@ -36,7 +34,6 @@ public class CategoryServiceImpl implements CategoryService{
 	 */
 	@Override
 	public Category createCategory(Category c) {
-		log.debug("Create category: " + c);
 		
 		if(cr.findOne(c.getCategoryId()) == null)
 			return cr.save(c);
@@ -53,7 +50,6 @@ public class CategoryServiceImpl implements CategoryService{
 	 */
 	@Override
 	public List<Category> getAllCategories() {
-		log.debug("Retrieving all categories");
 		
 		return cr.findAll();
 	}
@@ -68,7 +64,7 @@ public class CategoryServiceImpl implements CategoryService{
 	 */
 	@Override
 	public Category getCategory(int id) {
-		log.debug("Retrieving category with id " + id);
+		
 		return cr.findOne(id);
 	}
 	
@@ -77,7 +73,6 @@ public class CategoryServiceImpl implements CategoryService{
 	 */
 	@Override
 	public List<Category> getCategoriesByCategoryOwner(CategoryOwner owner) {
-		log.debug("Retrieving categories with owner " + owner);
 		
 		return cr.findCategoriesByCategoryOwner(owner);
 	}
@@ -91,7 +86,6 @@ public class CategoryServiceImpl implements CategoryService{
 	 */
 	@Override
 	public Category updateCategory(Category c) {
-		log.debug("Updating category " + c);
 		
 		if(!(cr.findOne(c.getCategoryId()) == null))
 			return cr.save(c);
@@ -106,7 +100,6 @@ public class CategoryServiceImpl implements CategoryService{
 	 */
 	@Override
 	public Boolean deleteCategory(Category c) {
-		log.debug("Deleting category " + c);
 		
 		try
 		{
