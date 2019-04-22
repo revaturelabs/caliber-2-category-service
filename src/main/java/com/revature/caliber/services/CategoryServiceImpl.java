@@ -1,8 +1,6 @@
 package com.revature.caliber.services;
 
 import java.util.List;
-
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -87,7 +85,7 @@ public class CategoryServiceImpl implements CategoryService{
 	@Override
 	public Category updateCategory(Category c) {
 		
-		if(!(cr.findOne(c.getCategoryId()) == null))
+		if((cr.findOne(c.getCategoryId()) != null))
 			return cr.save(c);
 		return null;
 	}
@@ -108,7 +106,7 @@ public class CategoryServiceImpl implements CategoryService{
 		}
 		catch(IllegalArgumentException e)
 		{
+			return false;
 		}
-		return false;
 	}
 }

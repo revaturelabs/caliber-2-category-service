@@ -448,3 +448,6 @@
 2019-04-19 16:05:14 DEBUG ResourceLoaderHelper:60 - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
 2019-04-19 16:05:14 DEBUG ValidationXmlParser:106 - No META-INF/validation.xml found. Using annotation based configuration only.
 2019-04-19 16:05:14 DEBUG CategoryController:93 - Getting all categories from database by owner
+2019-04-22 14:34:56 DEBUG CategoryController:56 - Getting all categories from database
+2019-04-22 14:35:02 DEBUG CategoryController:76 - Getting category objects with id: 1
+2019-04-22 14:35:59 DEBUG CategoryController:93 - Getting all categories from database by owner

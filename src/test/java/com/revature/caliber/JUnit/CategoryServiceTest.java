@@ -52,7 +52,7 @@ public class CategoryServiceTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		c = new Category(1, "Java", true, CategoryOwner.Panel);
+		c = new Category(1, "Java", true, CategoryOwner.PANEL);
 		
 		clist.addAll(Arrays.asList(new Category[] {c, new Category()}));
 		

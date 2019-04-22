@@ -141,8 +141,10 @@ public class Category implements Serializable {
 		if (skillCategory == null) {
 			if (other.skillCategory != null)
 				return false;
-		} else if (!skillCategory.equals(other.skillCategory))
-			return false;
+		}else { 
+			if (!skillCategory.equals(other.skillCategory))
+				return false;
+		}
 		return true;
 	}
 
