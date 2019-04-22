@@ -1,13 +1,5 @@
-language: java
-dist: trusty
-addons:
-  sonarcloud:
-    organization:  revaturelabs
-  token:
-    secure: $SONAR_TOKEN
-install:
-- mvn -N io.takari:maven:wrapper
-- ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-script:
-  - mvn clean install package
-  - sonar-scanner
+mvn sonar:sonar \
+  -Dsonar.projectKey=revaturelabs_caliber-2-category-service \
+  -Dsonar.organization=revaturelabs-screenforce \
+  -Dsonar.host.url=https://sonarcloud.io \
+  -Dsonar.login=$SONAR_TOKEN
