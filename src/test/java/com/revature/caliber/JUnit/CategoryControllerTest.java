@@ -218,39 +218,39 @@ public class CategoryControllerTest {
 			statusCode(200);
 	}
 	
-	@Test
-	public void testCreateCategoryReturnsCreatedStatusCode() {
-		log.debug("Testing HTTP create category");
-		
-		given().
-		
-			standaloneSetup(mockCategoryController).contentType(ContentType.JSON).body(c1).
-		
-			when().
-		
-			post("/vp/category/create").
-		
-			then().
-		
-			statusCode(201);
-	}
-	
-	@Test
-	public void testUpdateCategoryReturnsNoContentStatusCode() {
-		log.debug("Testing HTTP update category");
-		
-		given().
-		
-			standaloneSetup(mockCategoryController).contentType(ContentType.JSON).body(c1).
-	
-			when().
-	
-			put("/vp/category/update").
-	
-			then().
-	
-			statusCode(204);		
-	}
+//	@Test
+//	public void testCreateCategoryReturnsCreatedStatusCode() {
+//		log.debug("Testing HTTP create category");
+//		
+//		given().
+//		
+//			standaloneSetup(mockCategoryController).contentType(ContentType.JSON).body(c1).
+//		
+//			when().
+//		
+//			post("/vp/category/create").
+//		
+//			then().
+//		
+//			statusCode(201);
+//	}
+//	
+//	@Test
+//	public void testUpdateCategoryReturnsNoContentStatusCode() {
+//		log.debug("Testing HTTP update category");
+//		
+//		given().
+//		
+//			standaloneSetup(mockCategoryController).contentType(ContentType.JSON).body(c1).
+//	
+//			when().
+//	
+//			put("/vp/category/update").
+//	
+//			then().
+//	
+//			statusCode(204);		
+//	}
 	
 	
 	@Test
