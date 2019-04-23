@@ -1,5 +1,16 @@
-mvn sonar:sonar \
-  -Dsonar.projectKey=revaturelabs_caliber-2-category-service \
-  -Dsonar.organization=revaturelabs-screenforce \
-  -Dsonar.host.url=https://sonarcloud.io \
-  -Dsonar.login=$SONAR_TOKEN
+language: java
+sudo: false
+install: true
+
+addons:
+  sonarcloud:
+    organization: "revaturelabs-screenforce"
+    token:
+      secure: $SONAR_TOKEN
+
+jdk:
+  - oraclejdk8
+
+script:
+  # JaCoCo is used to have code coverage, the agent has to be activated
+  - mvn clean sonar:sonar org.jacoco:jacoco-maven-plugin:prepare-agent org.jacoco:jacoco-maven-plugin:report package 
