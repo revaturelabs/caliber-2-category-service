@@ -93,3 +93,80 @@
 2019-04-23 10:10:52 DEBUG CategoryController:56 - Getting all categories from database
 2019-04-23 10:12:02 DEBUG CategoryController:56 - Getting all categories from database
 2019-04-23 10:14:00 DEBUG CategoryController:93 - Getting all categories from database by owner
+2019-04-23 13:31:54 DEBUG CategoryControllerTest:226 - Testing HTTP create category
+2019-04-23 13:32:00 DEBUG logging:19 - Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2019-04-23 13:32:00 INFO  Version:30 - HV000001: Hibernate Validator 5.3.6.Final
+2019-04-23 13:32:01 DEBUG DefaultTraversableResolver:103 - Found javax.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
+2019-04-23 13:32:01 DEBUG DefaultTraversableResolver:114 - Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
+2019-04-23 13:32:01 DEBUG ConfigurationImpl:163 - Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2019-04-23 13:32:01 DEBUG ConfigurationImpl:199 - Setting custom ParameterNameProvider of type com.sun.proxy.$Proxy48
+2019-04-23 13:32:01 DEBUG ValidationXmlParser:99 - Trying to load META-INF/validation.xml for XML based Validator configuration.
+2019-04-23 13:32:01 DEBUG ResourceLoaderHelper:54 - Trying to load META-INF/validation.xml via TCCL
+2019-04-23 13:32:01 DEBUG ResourceLoaderHelper:60 - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+2019-04-23 13:32:01 DEBUG ValidationXmlParser:106 - No META-INF/validation.xml found. Using annotation based configuration only.
+2019-04-23 13:32:03 DEBUG CategoryController:113 - Saving new category: Category [categoryId=1, skillCategory=Java, isActive=true, categoryOwner=TRAINING]
+2019-04-23 13:32:04 DEBUG CategoryControllerTest:137 - Test retrieving all categories
+2019-04-23 13:32:04 DEBUG CategoryControllerTest:295 - Testing HTTP delete category
+2019-04-23 13:32:05 DEBUG DefaultTraversableResolver:103 - Found javax.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
+2019-04-23 13:32:05 DEBUG DefaultTraversableResolver:114 - Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
+2019-04-23 13:32:05 DEBUG ConfigurationImpl:163 - Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2019-04-23 13:32:05 DEBUG ConfigurationImpl:199 - Setting custom ParameterNameProvider of type com.sun.proxy.$Proxy48
+2019-04-23 13:32:05 DEBUG ValidationXmlParser:99 - Trying to load META-INF/validation.xml for XML based Validator configuration.
+2019-04-23 13:32:05 DEBUG ResourceLoaderHelper:54 - Trying to load META-INF/validation.xml via TCCL
+2019-04-23 13:32:05 DEBUG ResourceLoaderHelper:60 - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+2019-04-23 13:32:05 DEBUG ValidationXmlParser:106 - No META-INF/validation.xml found. Using annotation based configuration only.
+2019-04-23 13:32:06 DEBUG CategoryController:154 - Deleting category: Category [categoryId=1, skillCategory=Java, isActive=true, categoryOwner=TRAINING]
+2019-04-23 13:32:06 DEBUG CategoryControllerTest:277 - Testing HTTP update category
+2019-04-23 13:32:06 DEBUG CategoryControllerTest:192 - Testing HTTP get category by id
+2019-04-23 13:32:06 DEBUG DefaultTraversableResolver:103 - Found javax.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
+2019-04-23 13:32:06 DEBUG DefaultTraversableResolver:114 - Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
+2019-04-23 13:32:06 DEBUG ConfigurationImpl:163 - Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2019-04-23 13:32:06 DEBUG ConfigurationImpl:199 - Setting custom ParameterNameProvider of type com.sun.proxy.$Proxy48
+2019-04-23 13:32:06 DEBUG ValidationXmlParser:99 - Trying to load META-INF/validation.xml for XML based Validator configuration.
+2019-04-23 13:32:06 DEBUG ResourceLoaderHelper:54 - Trying to load META-INF/validation.xml via TCCL
+2019-04-23 13:32:06 DEBUG ResourceLoaderHelper:60 - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+2019-04-23 13:32:06 DEBUG ValidationXmlParser:106 - No META-INF/validation.xml found. Using annotation based configuration only.
+2019-04-23 13:32:06 DEBUG CategoryController:76 - Getting category objects with id: 1
+2019-04-23 13:32:06 DEBUG CategoryControllerTest:159 - Test retrieving categories by owner
+2019-04-23 13:32:06 DEBUG CategoryControllerTest:121 - Test updating a category
+2019-04-23 13:32:06 DEBUG CategoryControllerTest:260 - Testing HTTP update category
+2019-04-23 13:32:06 DEBUG DefaultTraversableResolver:103 - Found javax.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
+2019-04-23 13:32:06 DEBUG DefaultTraversableResolver:114 - Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
+2019-04-23 13:32:06 DEBUG ConfigurationImpl:163 - Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2019-04-23 13:32:06 DEBUG ConfigurationImpl:199 - Setting custom ParameterNameProvider of type com.sun.proxy.$Proxy48
+2019-04-23 13:32:06 DEBUG ValidationXmlParser:99 - Trying to load META-INF/validation.xml for XML based Validator configuration.
+2019-04-23 13:32:06 DEBUG ResourceLoaderHelper:54 - Trying to load META-INF/validation.xml via TCCL
+2019-04-23 13:32:06 DEBUG ResourceLoaderHelper:60 - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+2019-04-23 13:32:06 DEBUG ValidationXmlParser:106 - No META-INF/validation.xml found. Using annotation based configuration only.
+2019-04-23 13:32:06 DEBUG CategoryController:133 - Updating category: Category [categoryId=1, skillCategory=Java, isActive=true, categoryOwner=TRAINING]
+2019-04-23 13:32:06 DEBUG CategoryControllerTest:113 - Test creating a category
+2019-04-23 13:32:06 DEBUG CategoryControllerTest:175 - Testing HTTP get all categories
+2019-04-23 13:32:07 DEBUG DefaultTraversableResolver:103 - Found javax.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
+2019-04-23 13:32:07 DEBUG DefaultTraversableResolver:114 - Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
+2019-04-23 13:32:07 DEBUG ConfigurationImpl:163 - Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2019-04-23 13:32:07 DEBUG ConfigurationImpl:199 - Setting custom ParameterNameProvider of type com.sun.proxy.$Proxy48
+2019-04-23 13:32:07 DEBUG ValidationXmlParser:99 - Trying to load META-INF/validation.xml for XML based Validator configuration.
+2019-04-23 13:32:07 DEBUG ResourceLoaderHelper:54 - Trying to load META-INF/validation.xml via TCCL
+2019-04-23 13:32:07 DEBUG ResourceLoaderHelper:60 - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+2019-04-23 13:32:07 DEBUG ValidationXmlParser:106 - No META-INF/validation.xml found. Using annotation based configuration only.
+2019-04-23 13:32:07 DEBUG CategoryController:56 - Getting all categories from database
+2019-04-23 13:32:07 DEBUG CategoryControllerTest:129 - Test deleting a category
+2019-04-23 13:32:07 DEBUG CategoryControllerTest:243 - Testing HTTP create category
+2019-04-23 13:32:07 DEBUG CategoryControllerTest:151 - Test retrieving category by id
+2019-04-23 13:32:07 DEBUG CategoryController:76 - Getting category objects with id: 19
+2019-04-23 13:32:07 DEBUG CategoryControllerTest:209 - Testing HTTP get category by id
+2019-04-23 13:32:07 DEBUG DefaultTraversableResolver:103 - Found javax.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
+2019-04-23 13:32:07 DEBUG DefaultTraversableResolver:114 - Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
+2019-04-23 13:32:07 DEBUG ConfigurationImpl:163 - Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+2019-04-23 13:32:07 DEBUG ConfigurationImpl:199 - Setting custom ParameterNameProvider of type com.sun.proxy.$Proxy48
+2019-04-23 13:32:07 DEBUG ValidationXmlParser:99 - Trying to load META-INF/validation.xml for XML based Validator configuration.
+2019-04-23 13:32:07 DEBUG ResourceLoaderHelper:54 - Trying to load META-INF/validation.xml via TCCL
+2019-04-23 13:32:07 DEBUG ResourceLoaderHelper:60 - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+2019-04-23 13:32:07 DEBUG ValidationXmlParser:106 - No META-INF/validation.xml found. Using annotation based configuration only.
+2019-04-23 13:32:07 DEBUG CategoryController:93 - Getting all categories from database by owner
+2019-04-23 13:32:07 DEBUG CategoryServiceTest:80 - Test getting all categories service
+2019-04-23 13:32:07 DEBUG CategoryServiceTest:73 - Test creating a category service
+2019-04-23 13:32:07 DEBUG CategoryServiceTest:87 - Test getting categories by category owner service
+2019-04-23 13:32:07 DEBUG CategoryServiceTest:101 - Test category update service
+2019-04-23 13:32:07 DEBUG CategoryServiceTest:108 - Test category delete service
+2019-04-23 13:32:07 DEBUG CategoryServiceTest:94 - Test getting single category service
