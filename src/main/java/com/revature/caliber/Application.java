@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfigurat
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
-import org.xmlpull.v1.XmlPullParserException;
 
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -37,7 +36,7 @@ public class Application {
 	}
 
 	@Bean
-	public Docket api() throws IOException, XmlPullParserException, org.codehaus.plexus.util.xml.pull.XmlPullParserException {
+	public Docket api() throws IOException, org.codehaus.plexus.util.xml.pull.XmlPullParserException {
 		MavenXpp3Reader reader = new MavenXpp3Reader();
 		Model model = reader.read(new FileReader("pom.xml"));
 		return new Docket(DocumentationType.SWAGGER_2)
