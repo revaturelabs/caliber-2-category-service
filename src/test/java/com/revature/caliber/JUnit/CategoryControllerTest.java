@@ -17,7 +17,9 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 
+import com.revature.caliber.Application;
 import com.revature.caliber.beans.Category;
 import com.revature.caliber.beans.CategoryOwner;
 import com.revature.caliber.controllers.CategoryController;
@@ -35,7 +37,7 @@ import io.restassured.http.ContentType;
 
 
 @RunWith(MockitoJUnitRunner.class)
-//@SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class CategoryControllerTest {
 	
 	private static final Logger log = Logger.getLogger(CategoryControllerTest.class);
@@ -52,6 +54,8 @@ public class CategoryControllerTest {
 	private static final Category c3 = new Category(19, "Spring", true, CategoryOwner.Training);
 	private static final Category c4 = new Category(26, "Python", true, CategoryOwner.Panel);
 	private static final Category c5 = new Category(36, "Docker", true, CategoryOwner.Panel);
+	private static final Category c6 = null;
+	
 	
 	
 
@@ -61,7 +65,7 @@ public class CategoryControllerTest {
 	
 	@BeforeClass
 	public static void classSetup() {
-		RestAssured.port = 9000;
+		RestAssured.port = 8013;
 		categories = new ArrayList<>();
 		trainingCategories = new ArrayList<>();
 		panelCategories = new ArrayList<>();
@@ -227,12 +231,29 @@ public class CategoryControllerTest {
 			standaloneSetup(mockCategoryController).contentType(ContentType.JSON).body(c1).
 		
 			when().
-		
+			
 			post("/vp/category/create").
 		
 			then().
 		
 			statusCode(201);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testCreateNullCategoryThrowsIllegalArgumentException() {
+		log.debug("Testing HTTP create category");
+		
+		given().
+		
+			standaloneSetup(mockCategoryController).contentType(ContentType.JSON).body(c6).
+		
+			when().
+			
+			post("/vp/category/create").
+		
+			then().
+		
+			statusCode(500);
 	}
 	
 	@Test
@@ -250,6 +271,23 @@ public class CategoryControllerTest {
 			then().
 	
 			statusCode(204);		
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testUpdateNullCategoryThrowsIllegalArgumentException() {
+		log.debug("Testing HTTP update category");
+		
+		given().
+		
+			standaloneSetup(mockCategoryController).contentType(ContentType.JSON).body(c6).
+		
+			when().
+			
+			post("/vp/category/update").
+		
+			then().
+		
+			statusCode(500);
 	}
 	
 	

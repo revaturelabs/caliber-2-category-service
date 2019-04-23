@@ -111,10 +111,11 @@ public class CategoryController {
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<Category> createCategory(@RequestBody Category c) {
 		log.debug("Saving new category: " + c);
-		Category category = cs.createCategory(c);
-		if (category == null) {
+		Category category; 
+		if (c == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		} else {
+			category = cs.createCategory(c);
 			return new ResponseEntity<>(category, HttpStatus.CREATED);
 		}
 	}
@@ -130,10 +131,11 @@ public class CategoryController {
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<Category> updateCategory(@Valid @RequestBody Category c) {
 		log.debug("Updating category: " + c);
-		Category category = cs.updateCategory(c);
-		if (category == null) {
+		Category category;
+		if (c == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
+		category = cs.updateCategory(c);
 		return new ResponseEntity<>(category, HttpStatus.NO_CONTENT);
 	}
 
