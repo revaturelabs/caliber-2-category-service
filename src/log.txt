@@ -93,3 +93,40 @@
 2019-04-23 10:10:52 DEBUG CategoryController:56 - Getting all categories from database
 2019-04-23 10:12:02 DEBUG CategoryController:56 - Getting all categories from database
 2019-04-23 10:14:00 DEBUG CategoryController:93 - Getting all categories from database by owner
+2019-04-23 10:16:11 DEBUG CategoryController:93 - Getting all categories from database by owner
+2019-04-23 13:51:04 DEBUG CategoryServiceTest:81 - Test getting all categories service
+2019-04-23 13:51:04 DEBUG CategoryServiceTest:73 - Test creating a category service
+2019-04-23 13:51:04 DEBUG CategoryServiceTest:88 - Test getting categories by category owner service
+2019-04-23 13:51:04 DEBUG CategoryServiceTest:102 - Test category update service
+2019-04-23 13:51:04 DEBUG CategoryServiceTest:110 - Test category delete service
+2019-04-23 13:51:04 DEBUG CategoryServiceTest:95 - Test getting single category service
+2019-04-23 13:53:43 DEBUG CategoryServiceTest:82 - Test getting all categories service
+2019-04-23 13:53:43 DEBUG CategoryServiceTest:73 - Test creating a category service
+2019-04-23 13:53:43 DEBUG CategoryServiceTest:89 - Test getting categories by category owner service
+2019-04-23 13:53:43 DEBUG CategoryServiceTest:103 - Test category update service
+2019-04-23 13:53:43 DEBUG CategoryServiceTest:111 - Test category delete service
+2019-04-23 13:53:43 DEBUG CategoryServiceTest:96 - Test getting single category service
+2019-04-23 13:55:07 DEBUG CategoryServiceTest:81 - Test getting all categories service
+2019-04-23 13:55:07 DEBUG CategoryServiceTest:73 - Test creating a category service
+2019-04-23 13:55:07 DEBUG CategoryServiceTest:88 - Test getting categories by category owner service
+2019-04-23 13:55:07 DEBUG CategoryServiceTest:102 - Test category update service
+2019-04-23 13:55:07 DEBUG CategoryServiceTest:109 - Test category delete service
+2019-04-23 13:55:07 DEBUG CategoryServiceTest:95 - Test getting single category service
+2019-04-23 13:56:14 DEBUG CategoryServiceTest:81 - Test getting all categories service
+2019-04-23 13:56:14 DEBUG CategoryServiceTest:73 - Test creating a category service
+2019-04-23 13:56:15 DEBUG CategoryServiceTest:88 - Test getting categories by category owner service
+2019-04-23 13:56:15 DEBUG CategoryServiceTest:102 - Test category update service
+2019-04-23 13:56:15 DEBUG CategoryServiceTest:110 - Test category delete service
+2019-04-23 13:56:15 DEBUG CategoryServiceTest:95 - Test getting single category service
+2019-04-23 13:56:43 DEBUG CategoryServiceTest:81 - Test getting all categories service
+2019-04-23 13:56:43 DEBUG CategoryServiceTest:73 - Test creating a category service
+2019-04-23 13:56:43 DEBUG CategoryServiceTest:88 - Test getting categories by category owner service
+2019-04-23 13:56:43 DEBUG CategoryServiceTest:102 - Test category update service
+2019-04-23 13:56:43 DEBUG CategoryServiceTest:110 - Test category delete service
+2019-04-23 13:56:43 DEBUG CategoryServiceTest:95 - Test getting single category service
+2019-04-23 13:58:40 DEBUG CategoryServiceTest:81 - Test getting all categories service
+2019-04-23 13:58:40 DEBUG CategoryServiceTest:73 - Test creating a category service
+2019-04-23 13:58:40 DEBUG CategoryServiceTest:88 - Test getting categories by category owner service
+2019-04-23 13:58:40 DEBUG CategoryServiceTest:102 - Test category update service
+2019-04-23 13:58:40 DEBUG CategoryServiceTest:110 - Test category delete service
+2019-04-23 13:58:40 DEBUG CategoryServiceTest:95 - Test getting single category service

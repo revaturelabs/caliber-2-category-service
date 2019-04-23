@@ -72,7 +72,8 @@ public class CategoryServiceTest {
 	public void testCreateCategory() {
 		log.debug("Test creating a category service");
 		
-		cs.createCategory(c);	
+		cs.createCategory(c);
+		verify(cr).findOne(c.getCategoryId());
 	}
 	
 	@Test
@@ -101,6 +102,7 @@ public class CategoryServiceTest {
 		log.debug("Test category update service");
 		
 		cs.updateCategory(c);
+		verify(cr).save(c);
 	}
 	
 	@Test
