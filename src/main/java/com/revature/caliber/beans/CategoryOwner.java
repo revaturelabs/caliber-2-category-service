@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonFormat(shape = JsonFormat.Shape.NATURAL)
 public enum CategoryOwner implements Serializable{
-	@JsonProperty("training")
+	@JsonProperty("Training")
 	TRAINING,
-	@JsonProperty("panel")
+	@JsonProperty("Panel")
 	PANEL
 }
