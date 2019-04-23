@@ -4,7 +4,7 @@ install: true
 
 addons:
   sonarcloud:
-    organization: "revaturelabs"
+    organization: "revaturelabs-screenforce"
     token:
       secure: $SONAR_TOKEN
 
