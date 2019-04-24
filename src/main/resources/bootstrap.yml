@@ -1,7 +1,7 @@
-# spring: 
-#  cloud:
-#    config:
-#      name: category-service
-#      discovery:
-#        service-id: config
-#        enabled: true
+ spring: 
+  cloud:
+    config:
+      name: category-service
+      discovery:
+        service-id: config
+        enabled: true
