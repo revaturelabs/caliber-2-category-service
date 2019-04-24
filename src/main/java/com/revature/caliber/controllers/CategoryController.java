@@ -85,6 +85,8 @@ public class CategoryController {
 	 * 
 	 * @return cList - a List object with all the Category entities from the
 	 *         database
+	 *         
+	 * {owner} value MUST BE WRITTEN IN ALL CAPS -allowed compliance with Sonar Cloud/Travis integration
 	 */
 	@GetMapping(value = "all/category/owner/{owner}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
