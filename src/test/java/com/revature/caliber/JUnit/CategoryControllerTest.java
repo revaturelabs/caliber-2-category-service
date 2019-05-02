@@ -180,7 +180,7 @@ public class CategoryControllerTest {
 			
 			when().
 			
-			get("/all/category/all").
+			get("/category/all/category/all").
 			
 			then().
 			
