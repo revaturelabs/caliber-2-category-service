@@ -49,7 +49,7 @@ public class CategoryController {
 	 * @return cList - a List object with all the Category entities from the
 	 *         database
 	 */
-	@GetMapping(value = "all/category/all", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "category/all/category/all", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<List<Category>> getAllCatagories()
 	{
