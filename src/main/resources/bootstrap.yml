@@ -7,10 +7,11 @@ spring:
       discovery:
         service-id: config
         enabled: true
-        
+     
 ---               
 spring:
   profiles: prod
+
 eureka:
  client:
    service-url:
