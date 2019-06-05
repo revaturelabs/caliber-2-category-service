@@ -20,4 +20,6 @@ public interface CategoryService {
 	
 	public Boolean deleteCategory(Category c);
 	
+	public List<Category> getAllActiveCategories();
+	
 }

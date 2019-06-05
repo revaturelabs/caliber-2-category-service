@@ -109,4 +109,10 @@ public class CategoryServiceImpl implements CategoryService{
 			return false;
 		}
 	}
+
+
+	@Override
+	public List<Category> getAllActiveCategories() {
+		return cr.getAllActiveCategories();
+	}
 }
