@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.caliber.beans.Category;
@@ -35,6 +36,7 @@ import com.revature.caliber.services.CategoryService;
  */
 @RestController
 @CrossOrigin(origins = "*")
+@RequestMapping("/category")
 public class CategoryController {
 	
 	
@@ -43,13 +45,25 @@ public class CategoryController {
 	@Autowired
 	CategoryService cs;
 	
+	
+	@GetMapping("/all/active")
+	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
+	public ResponseEntity<List<Category>> getAllActiveCategories() {
+		log.debug("Getting all active categories from database");
+		List<Category> cList = cs.getAllCategories();
+		if (cList.isEmpty())
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+		return new ResponseEntity<>(cList, HttpStatus.OK);
+	}
+	
 	/**
 	 * Returns all Categories for the database
 	 * 
 	 * @return cList - a List object with all the Category entities from the
 	 *         database
 	 */
-	@GetMapping(value = "category/all/category/all", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<List<Category>> getAllCatagories()
 	{
@@ -69,7 +83,7 @@ public class CategoryController {
 	 * 
 	 * @return - Returns a string of the category object with the id provided
 	 */
-	@GetMapping(value = "all/category/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<Category> getCategoryById(@PathVariable(name = "id") Integer id)
 	{
@@ -88,7 +102,7 @@ public class CategoryController {
 	 *         
 	 * {owner} value MUST BE WRITTEN IN ALL CAPS -allowed compliance with Sonar Cloud/Travis integration
 	 */
-	@GetMapping(value = "all/category/owner/{owner}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "owner/{owner}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<List<Category>> getCategoryByOwner(@PathVariable(name = "owner") CategoryOwner owner)
 	{
