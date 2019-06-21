@@ -7,7 +7,9 @@ spring:
       discovery:
         service-id: config
         enabled: true
-     
+
+server:
+  context-path: /category/*
 ---               
 spring:
   profiles: prod
