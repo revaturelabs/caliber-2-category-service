@@ -180,7 +180,7 @@ public class CategoryControllerTest {
 			
 			when().
 			
-			get("/category/all/category/all").
+			get("/all").
 			
 			then().
 			
@@ -197,7 +197,7 @@ public class CategoryControllerTest {
 		
 			when().
 		
-			get("/all/category/1").
+			get("/1").
 		
 			then().
 		
@@ -214,7 +214,7 @@ public class CategoryControllerTest {
 		
 			when().
 		
-			get("/all/category/owner/PANEL").
+			get("/owner/PANEL").
 		
 			then().
 		
