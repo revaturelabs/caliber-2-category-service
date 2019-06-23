@@ -9,7 +9,8 @@ spring:
         enabled: true
 
 server:
-  context-path: /category/*
+  servlet-path: /category/*
+  
 ---               
 spring:
   profiles: prod
