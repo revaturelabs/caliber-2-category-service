@@ -35,7 +35,7 @@ import com.revature.caliber.services.CategoryService;
  *
  */
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(value = "*")
 public class CategoryController {
 	
 	
