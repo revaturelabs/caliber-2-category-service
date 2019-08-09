@@ -3,7 +3,6 @@
 .attach_pid*
 *.ipr
 *.iws
-*.jar
 *.sw?
 *~
 .#*
