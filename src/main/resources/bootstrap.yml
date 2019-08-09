@@ -10,18 +10,22 @@ spring:
 
 server:
   servlet-path: /category/*
+
+---
+spring:
+  profiles: local
+
+
 ---
 spring:
   profiles: dev
-  
- 
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://caliber-2-dev-alb-315997072.us-east-1.elb.amazonaws.com/eureka
 ---               
 spring:
   profiles: prod
-
-eureka:
- instance:
-    prefer-ip-address: true      
- client:
-   service-url:
-     defaultZone: http://caliber-2-dev-alb-315997072.us-east-1.elb.amazonaws.com/eureka
