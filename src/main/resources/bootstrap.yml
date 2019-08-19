@@ -19,13 +19,18 @@ spring:
 ---
 spring:
   profiles: dev
+  cloud:
+    config:
+      uri: http://config.caliber-2-dev
+      discovery:
+        enabled: false
 
 eureka:
-  instance:
-    prefer-ip-address: true
   client:
-    service-url:
-      defaultZone: http://caliber-2-dev-alb-315997072.us-east-1.elb.amazonaws.com/eureka
+    enabled: false
+
+server:
+  port: 80
 ---               
 spring:
   profiles: prod
