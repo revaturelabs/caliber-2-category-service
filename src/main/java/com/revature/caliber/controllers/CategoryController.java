@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.caliber.beans.Category;
@@ -45,32 +46,21 @@ public class CategoryController {
 	CategoryService cs;
 	
 	
-	@GetMapping("/all/active")
-	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
-	public ResponseEntity<List<Category>> getAllActiveCategories() {
-		log.debug("Getting all active categories from database");
-		List<Category> cList = cs.getAllCategories();
-		if (cList.isEmpty())
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	@GetMapping("/all")
+	public ResponseEntity<List<Category>> getAllActiveCategories(@RequestParam(required = false) boolean active) {
+		log.debug("Fetching category");
+		List<Category> cList;
 		
-		return new ResponseEntity<>(cList, HttpStatus.OK);
-	}
-	
-	/**
-	 * Returns all Categories for the database
-	 * 
-	 * @return cList - a List object with all the Category entities from the
-	 *         database
-	 */
-	@GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
-	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
-	public ResponseEntity<List<Category>> getAllCatagories()
-	{
-		log.debug("Getting all categories from database");
+		if (active) {
+			log.debug("Getting all active categories from database");
+			cList = cs.getAllActiveCategories();	
+		} else {
+			log.debug("Getting all categories");
+			cList = cs.getAllCategories();
+		}
 		
-		List<Category> cList = cs.getAllCategories();
 		if (cList.isEmpty())
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		
 		return new ResponseEntity<>(cList, HttpStatus.OK);
 	}
@@ -83,9 +73,7 @@ public class CategoryController {
 	 * @return - Returns a string of the category object with the id provided
 	 */
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
-	public ResponseEntity<Category> getCategoryById(@PathVariable(name = "id") Integer id)
-	{
+	public ResponseEntity<Category> getCategoryById(@PathVariable(name = "id") Integer id)  {
 		log.debug("Getting category objects with id: " + id);
 		Category c = cs.getCategory(id);
 		if (c != null)
@@ -122,7 +110,7 @@ public class CategoryController {
 	 * 
 	 * @return http response: CREATED
 	 */
-	@PostMapping(value="vp/category/create", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value="/create", consumes = MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<Category> createCategory(@RequestBody Category c) {
 		log.debug("Saving new category: " + c);
@@ -142,15 +130,17 @@ public class CategoryController {
 	 * 
 	 * @return - returns an http status code: NO_CONTENT
 	 */
-	@PutMapping(value="vp/category/update", consumes=MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(value="/update", consumes=MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<Category> updateCategory(@Valid @RequestBody Category c) {
 		log.debug("Updating category: " + c);
 		Category category;
 		if (c == null) {
+			log.debug("No valid category to create: BAD REQUEST");
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		category = cs.updateCategory(c);
+		log.debug("Create categroy: " + c);
 		return new ResponseEntity<>(category, HttpStatus.NO_CONTENT);
 	}
 
@@ -162,14 +152,15 @@ public class CategoryController {
 	 * 
 	 * @return returns an http status code: NO_CONTENT
 	 */
-	@DeleteMapping(value="vp/category/delete", consumes=MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping(value="/delete", consumes=MediaType.APPLICATION_JSON_VALUE)
 	@Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 	public ResponseEntity<Boolean> deleteCategory(@Valid @RequestBody Category c)
 	{
-		log.debug("Deleting category: " + c);
 		if (cs.deleteCategory(c) != null) {
+			log.debug("Deleting category: " + c);
 			return new ResponseEntity<>(HttpStatus.ACCEPTED);
 		} else {
+			log.debug("No valid category to delete");
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}

@@ -231,7 +231,7 @@ public class CategoryControllerTest {
 		
 			when().
 			
-			post("/vp/category/create").
+			post("/create").
 		
 			then().
 		
@@ -248,7 +248,7 @@ public class CategoryControllerTest {
 		
 			when().
 			
-			post("/vp/category/create").
+			post("/create").
 		
 			then().
 		
@@ -265,7 +265,7 @@ public class CategoryControllerTest {
 	
 			when().
 	
-			put("/vp/category/update").
+			put("/update").
 	
 			then().
 	
@@ -282,7 +282,7 @@ public class CategoryControllerTest {
 		
 			when().
 			
-			post("/vp/category/update").
+			post("/update").
 		
 			then().
 		
@@ -300,7 +300,7 @@ public class CategoryControllerTest {
 	
 			when().
 	
-			delete("/vp/category/delete").
+			delete("/delete").
 	
 			then().
 	
