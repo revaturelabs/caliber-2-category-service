@@ -19,7 +19,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.revature.caliber.Application;
+import com.revature.caliber.CategoryServiceApplication;
 import com.revature.caliber.beans.Category;
 import com.revature.caliber.beans.CategoryOwner;
 import com.revature.caliber.controllers.CategoryController;
@@ -37,7 +37,7 @@ import io.restassured.http.ContentType;
 
 
 @RunWith(MockitoJUnitRunner.class)
-@SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = CategoryServiceApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class CategoryControllerTest {
 	
 	private static final Logger log = Logger.getLogger(CategoryControllerTest.class);
