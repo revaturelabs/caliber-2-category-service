@@ -1,6 +1,7 @@
 package com.revature.caliber.controllers;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -12,16 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.revature.caliber.beans.Category;
 import com.revature.caliber.beans.CategoryOwner;
@@ -47,7 +39,8 @@ public class CategoryController {
 	
 	
 	@GetMapping("/all")
-	public ResponseEntity<List<Category>> getAllActiveCategories(@RequestParam(required = false) boolean active) {
+	public ResponseEntity<List<Category>> getAllActiveCategories(@RequestParam(required = false) boolean active, @RequestHeader Map<String, String> headers) {
+		log.debug(headers);
 		log.debug("Fetching category");
 		List<Category> cList;
 		
