@@ -1,12 +1,12 @@
 spring:
   application:
     name: category-service 
-  cloud:
-    config:
-      name: category-service
-      discovery:
-        service-id: config
-        enabled: true
+#  cloud:
+#    config:
+#      name: category-service
+#      discovery:
+#        service-id: config
+#        enabled: true
 
 server:
   servlet-path: /category/*
@@ -14,8 +14,15 @@ server:
 ---
 spring:
   profiles: local
-
-
+  cloud:
+    config:
+      uri: http://localhost:8888
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
 ---
 spring:
   profiles: dev
