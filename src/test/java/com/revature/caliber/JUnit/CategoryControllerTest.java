@@ -21,7 +21,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.revature.caliber.CategoryServiceApplication;
 import com.revature.caliber.beans.Category;
-import com.revature.caliber.beans.CategoryOwner;
 import com.revature.caliber.controllers.CategoryController;
 import com.revature.caliber.services.CategoryService;
 
@@ -49,11 +48,11 @@ public class CategoryControllerTest {
 	static CategoryController mockCategoryController;
 	
 	
-	private static final Category c1 = new Category(1, "Java", true, CategoryOwner.TRAINING);
-	private static final Category c2 = new Category(18, "Hibernate", true, CategoryOwner.TRAINING);
-	private static final Category c3 = new Category(19, "Spring", true, CategoryOwner.TRAINING);
-	private static final Category c4 = new Category(26, "Python", true, CategoryOwner.PANEL);
-	private static final Category c5 = new Category(36, "Docker", true, CategoryOwner.PANEL);
+	private static final Category c1 = new Category(1, "Java", true);
+	private static final Category c2 = new Category(18, "Hibernate", true);
+	private static final Category c3 = new Category(19, "Spring", true);
+	private static final Category c4 = new Category(26, "Python", true);
+	private static final Category c5 = new Category(36, "Docker", true);
 	private static final Category c6 = null;
 	
 	
@@ -92,8 +91,6 @@ public class CategoryControllerTest {
 		panelCategories.add(c5);
 		
 		org.mockito.Mockito.when(mockCategoryService.getAllCategories()).thenReturn(categories);
-		org.mockito.Mockito.when(mockCategoryService.getCategoriesByCategoryOwner(CategoryOwner.TRAINING)).thenReturn(trainingCategories);
-		org.mockito.Mockito.when(mockCategoryService.getCategoriesByCategoryOwner(CategoryOwner.PANEL)).thenReturn(panelCategories);
 		
 		org.mockito.Mockito.when(mockCategoryService.getCategory(1)).thenReturn(c1);
 		org.mockito.Mockito.when(mockCategoryService.getCategory(18)).thenReturn(c2);
@@ -149,25 +146,10 @@ public class CategoryControllerTest {
 	@Test
 	public void testGetCategoryById() {
 		log.debug("Test retrieving category by id");
-		
+
 		Category mockCategory = mockCategoryController.getCategoryById(19).getBody();
 		assertEquals("Expected category to be " + categories.get(2), categories.get(2), mockCategory);
 	}
-	
-	@Test
-	public void testGetCategoriesByOwner() {
-		log.debug("Test retrieving categories by owner");
-		
-		List<Category> cpList = mockCategoryService.getCategoriesByCategoryOwner(CategoryOwner.PANEL);
-		assertEquals("Expected first category to be "+ categories.get(3).getSkillCategory(),categories.get(3).getSkillCategory(),cpList.get(0).getSkillCategory());
-		assertEquals("Expected second category to be "+ categories.get(4).getSkillCategory(),categories.get(4).getSkillCategory(),cpList.get(1).getSkillCategory());
-		
-		List<Category> ctList = mockCategoryService.getCategoriesByCategoryOwner(CategoryOwner.TRAINING);
-		assertEquals("Expected first category to be "+ categories.get(0).getSkillCategory(),categories.get(0).getSkillCategory(),ctList.get(0).getSkillCategory());
-		assertEquals("Expected second category to be "+ categories.get(1).getSkillCategory(),categories.get(1).getSkillCategory(),ctList.get(1).getSkillCategory());
-		assertEquals("Expected third category to be "+ categories.get(2).getSkillCategory(),categories.get(2).getSkillCategory(),ctList.get(2).getSkillCategory());
-
-	}	
 
 	
 	@Test

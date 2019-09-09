@@ -2,10 +2,10 @@ package com.revature.caliber.services;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.revature.caliber.beans.Category;
-import com.revature.caliber.beans.CategoryOwner;
 import com.revature.caliber.repository.CategoryRepository;
 
 /**
@@ -18,9 +18,8 @@ import com.revature.caliber.repository.CategoryRepository;
 
 @Service
 public class CategoryServiceImpl implements CategoryService{
-	
-	
-	
+
+
 	@Autowired
 	CategoryRepository cr;
 	
@@ -32,11 +31,11 @@ public class CategoryServiceImpl implements CategoryService{
 	 */
 	@Override
 	public Category createCategory(Category c) {
-		
-		if(cr.findOne(c.getCategoryId()) == null)
-			return cr.save(c);
-		else
-			return null;
+		if (cr.getCategoryByName(c.getSkillCategory()).size() != 0) {
+			throw new DataIntegrityViolationException("Category already exists");
+		}
+
+		return cr.save(c);
 	}
 
 	
@@ -65,17 +64,6 @@ public class CategoryServiceImpl implements CategoryService{
 		
 		return cr.findOne(id);
 	}
-	
-	/**
-	 * Retrieve a single Category, based on the Category owner
-	 */
-	@Override
-	public List<Category> getCategoriesByCategoryOwner(CategoryOwner owner) {
-		
-		return cr.findCategoriesByCategoryOwner(owner);
-	}
-
-
 	
 	/**
 	 * Updates a provided Category, preserves the id
@@ -114,5 +102,10 @@ public class CategoryServiceImpl implements CategoryService{
 	@Override
 	public List<Category> getAllActiveCategories() {
 		return cr.getAllActiveCategories();
+	}
+
+	@Override
+	public List<Category> getAllInactiveCategories() {
+		return cr.getAllInavctiveCategories();
 	}
 }

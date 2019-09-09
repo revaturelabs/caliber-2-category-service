@@ -20,7 +20,6 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.revature.caliber.beans.Category;
-import com.revature.caliber.beans.CategoryOwner;
 import com.revature.caliber.repository.CategoryRepository;
 import com.revature.caliber.services.CategoryServiceImpl;
 
@@ -52,15 +51,13 @@ public class CategoryServiceTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		c = new Category(1, "Java", true, CategoryOwner.PANEL);
+		c = new Category(1, "Java", true);
 		
 		clist.addAll(Arrays.asList(new Category[] {c, new Category()}));
 		
 		when(cr.findAll()).thenReturn(clist);
 		
 		when(cr.findOne(1)).thenReturn(c);
-		
-		when(cr.findCategoriesByCategoryOwner(c.getCategoryOwner())).thenReturn(clist);
 	}
 	
 	@After
@@ -79,15 +76,8 @@ public class CategoryServiceTest {
 	@Test
 	public void testGetAllCategories() {
 		log.debug("Test getting all categories service");
-		
+
 		assertEquals("All categories should be retrieved", clist, this.cs.getAllCategories());
-	}
-	
-	@Test
-	public void testGetAllCategoriesByOwner() {
-		log.debug("Test getting categories by category owner service");
-		
-		assertEquals("All categories with owned by panel should be retrieved", clist, this.cs.getCategoriesByCategoryOwner(c.getCategoryOwner()));
 	}
 	
 	@Test
