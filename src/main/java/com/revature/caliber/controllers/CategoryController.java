@@ -47,17 +47,17 @@ public class CategoryController {
   @GetMapping("")
   public ResponseEntity<List<Category>> getAllCategories(@RequestParam(required = false) boolean active, @RequestParam(required = false) boolean inactive) {
     log.debug("Fetching category");
-    List<Category> cList;
+    List<Category> cList = null;
 
-    if (active) {
+    if(active && inactive || !active && !inactive) {
+      log.debug("Getting all categories");
+      cList = cs.getAllCategories();
+    } else if (active) {
       log.debug("Getting all active categories from database");
       cList = cs.getAllActiveCategories();
     } else if(inactive) {
       log.debug("Getting all inactive categories");
       cList = cs.getAllInactiveCategories();
-    } else {
-      log.debug("Getting all categories");
-      cList = cs.getAllCategories();
     }
 
     if (cList.isEmpty())
