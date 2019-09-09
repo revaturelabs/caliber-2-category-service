@@ -125,8 +125,8 @@ public class CategoryControllerTest {
 	public void testDeleteCategory() {
 		log.debug("Test deleting a category");
 		
-		mockCategoryService.deleteCategory(c4);
-		verify(mockCategoryService).deleteCategory(c4);
+		mockCategoryService.deleteCategoryById(c4.getCategoryId());
+		verify(mockCategoryService).deleteCategoryById(c4.getCategoryId());
 	}
 	
 	@Test

@@ -15,7 +15,7 @@ public interface CategoryService {
 	
 	public Category updateCategory(Category c);
 	
-	public Boolean deleteCategory(Category c);
+	public void deleteCategoryById(int id);
 	
 	public List<Category> getAllActiveCategories();
 

@@ -1,12 +1,16 @@
 package com.revature.caliber.services;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.revature.caliber.beans.Category;
 import com.revature.caliber.repository.CategoryRepository;
+
+import javax.xml.crypto.Data;
 
 /**
  * 
@@ -30,7 +34,7 @@ public class CategoryServiceImpl implements CategoryService{
 	 * 
 	 */
 	@Override
-	public Category createCategory(Category c) {
+	public Category createCategory(Category c) throws DataIntegrityViolationException {
 		if (cr.getCategoryByName(c.getSkillCategory()).size() != 0) {
 			throw new DataIntegrityViolationException("Category already exists");
 		}
@@ -67,35 +71,37 @@ public class CategoryServiceImpl implements CategoryService{
 	
 	/**
 	 * Updates a provided Category, preserves the id
-	 * 
+	 *
 	 * @param - c - the Category item to be updated
+	 * @return  will be null if no update will hold updated category otherwise
 	 */
 	@Override
-	public Category updateCategory(Category c) {
-		
-		if((cr.findOne(c.getCategoryId()) != null))
-			return cr.save(c);
-		return null;
+	public Category updateCategory(Category c) throws DataIntegrityViolationException {
+		Category existing = cr.findOne(c.getCategoryId());
+		Category updatedCategory = null;
+
+		if(existing != null) {
+			updatedCategory = cr.save(c);
+		}
+
+		return updatedCategory;
 	}
 
-	
+
 	/**
 	 * Removes a Category from the database
-	 * 
+	 *
 	 * @param - c - the Category to to be deleted
+	 * @throws NoSuchElementException if there is no category found with given id
 	 */
-	@Override
-	public Boolean deleteCategory(Category c) {
-		
-		try
-		{
-			cr.delete(c);
-			return true;
+	public void deleteCategoryById(int id) throws NoSuchElementException {
+		Category existing = cr.findOne(id);
+		if (existing == null) {
+			throw new NoSuchElementException();
 		}
-		catch(IllegalArgumentException e)
-		{
-			return false;
-		}
+
+		existing.setActive(false);
+		cr.save(existing);
 	}
 
 

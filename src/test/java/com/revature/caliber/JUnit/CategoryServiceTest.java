@@ -99,7 +99,7 @@ public class CategoryServiceTest {
 	public void testDeleteCategory() {
 		log.debug("Test category delete service");
 		
-		cs.deleteCategory(c);
+		cs.deleteCategoryById(c.getCategoryId());
 		verify(cr).delete(c);
 	}
 }

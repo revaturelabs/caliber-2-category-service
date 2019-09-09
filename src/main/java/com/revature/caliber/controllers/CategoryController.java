@@ -1,5 +1,6 @@
 package com.revature.caliber.controllers;
 
+import com.netflix.ribbon.proxy.annotation.Http;
 import com.revature.caliber.beans.Category;
 import com.revature.caliber.services.CategoryService;
 import org.apache.log4j.Logger;
@@ -16,7 +17,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 
 /**
@@ -107,23 +110,41 @@ public class CategoryController {
   }
 
   /**
-   * Updates a Category entry in the database
+   * Updates a Category entry in the database creates if doesn't exist
    *
    * @param - c - the Category entry to be updated
    * @return - returns an http status code: NO_CONTENT
    */
-  @PutMapping(value = "/update", consumes = MediaType.APPLICATION_JSON_VALUE)
+  @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
   @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
-  public ResponseEntity<Category> updateCategory(@Valid @RequestBody Category c) {
-    log.debug("Updating category: " + c);
+  public ResponseEntity<Category> updateCategory(@Valid @RequestBody Category c, @PathVariable int id) {
+    c.setCategoryId(id);
+    log.debug("Updating category: " + id);
     Category category;
     if (c == null) {
       log.debug("No valid category to create: BAD REQUEST");
       return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
-    category = cs.updateCategory(c);
-    log.debug("Create categroy: " + c);
-    return new ResponseEntity<>(category, HttpStatus.NO_CONTENT);
+
+    // Track if category was created or updated
+    HttpStatus status;
+    try {
+      category = cs.updateCategory(c);
+      // If null then no category existed
+      if (category == null) {
+        log.info("Created Category: " + c);
+        category = cs.createCategory(c);
+        status = HttpStatus.CREATED;
+      } else {
+        status = HttpStatus.OK;
+      }
+    } catch (DataIntegrityViolationException e) {
+      log.debug("Error creating category on put: ", e);
+      return new ResponseEntity<>(HttpStatus.CONFLICT);
+    }
+
+    log.debug("Update category " + id +" to: " + c);
+    return new ResponseEntity<>(category, status);
   }
 
   /**
@@ -133,15 +154,17 @@ public class CategoryController {
    * @param - c - the Category entry to be deleted
    * @return returns an http status code: NO_CONTENT
    */
-  @DeleteMapping(value = "/delete", consumes = MediaType.APPLICATION_JSON_VALUE)
+  @DeleteMapping(value = "/{id}")
   @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
-  public ResponseEntity<Boolean> deleteCategory(@Valid @RequestBody Category c) {
-    if (cs.deleteCategory(c) != null) {
-      log.debug("Deleting category: " + c);
-      return new ResponseEntity<>(HttpStatus.ACCEPTED);
-    } else {
-      log.debug("No valid category to delete");
-      return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+  public ResponseEntity<Boolean> deleteCategory(@PathVariable int id) {
+    try {
+      cs.deleteCategoryById(id);
+    } catch (NoSuchElementException e) {
+      log.debug("No category to delete " + id);
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    log.debug("Deleted category: " + id);
+    return new ResponseEntity<>(HttpStatus.OK);
   }
 }
