@@ -1,0 +1,22 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: category-service
+data:
+  application.yml: |-
+    greeting:
+      message: WE BACK BITCHES!!!
+    farewell:
+      message: Say Goodbye
+    ---
+    spring:
+      profiles: development
+    greeting:
+      message: Say Hello to the Developers
+    farewell:
+      message: Say Goodbye to the Developers
+    ---
+    spring:
+      profiles: production
+    greeting:
+      message: Say Hello to the Ops
