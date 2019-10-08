@@ -1,13 +1,20 @@
 spring:
   application:
     name: category-service
+
+---
+spring:
+  profiles:
+    active: local
+---
+spring:
+  profiles:
+    active: kubernetes
   cloud:
     kubernetes:
       reload:
         enabled: true
-        mode: polling
-        period: 5000
+        mode: event
       config:
         sources:
-          - name: other
           - name: ${spring.application.name}

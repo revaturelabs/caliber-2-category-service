@@ -11,22 +11,34 @@ spring:
     username: sa
     password: password
 
-management:
-  endpoint:
-    restart:
-      enabled: true
-    health:
-      enabled: true
-    info:
-      enabled: true
-
 server:
   port: 10001
 
 ---
 spring:
   profiles:
-    active: dev
-server:
-  port: 80
+    active: local
+  cloud:
+    kubernetes:
+      secrets:
+        enabled: false
+      config:
+        enabled: false
+      reload:
+        enabled: false
+---
+spring:
+  profiles:
+    active: kubernetes
+
+  management:
+    endpoint:
+      restart:
+        enabled: true
+      health:
+        enabled: true
+      info:
+        enabled: true
+  server:
+    port: 80
 

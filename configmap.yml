@@ -5,7 +5,7 @@ metadata:
 data:
   application.yml: |-
     greeting:
-      message: WE BACK BITCHES!!!
+      message: This is the current message 
     farewell:
       message: Say Goodbye
     ---
