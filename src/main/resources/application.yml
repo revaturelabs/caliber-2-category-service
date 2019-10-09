@@ -7,13 +7,14 @@ spring:
       ddl-auto: create-drop
   datasource:
     platform: h2
-    url: jdbc:h2:mem:testdb;Mode=PostgreSQL
+    url: jdbc:h2:mem:caliber;Mode=PostgreSQL
     username: sa
     password: password
 
 server:
-  port: 10001
-
+  port: 8080
+  error:
+    include-stacktrace: never
 ---
 spring:
   profiles:

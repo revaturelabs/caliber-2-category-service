@@ -22,7 +22,7 @@ public class Category {
     @Column(name = "name", unique = true)
     private String name;
 
-    @Column(name = "created_on")
+    @Column(name = "created_on", updatable = false)
     @CreatedDate
     private Date createdOn;
 

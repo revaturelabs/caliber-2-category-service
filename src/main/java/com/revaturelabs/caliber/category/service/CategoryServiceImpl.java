@@ -2,9 +2,12 @@ package com.revaturelabs.caliber.category.service;
 
 import com.revaturelabs.caliber.category.domain.entity.Category;
 import com.revaturelabs.caliber.category.domain.repository.CategoryRepository;
+import com.revaturelabs.caliber.category.exception.CategoryConflictException;
+import com.revaturelabs.caliber.category.exception.CategoryNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -16,7 +19,6 @@ import static net.logstash.logback.argument.StructuredArguments.kv;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
-    private static final Logger log = LoggerFactory.getLogger(CategoryServiceImpl.class);
 
     @Autowired
     CategoryRepository categoryRepository;
@@ -26,8 +28,6 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     public Category create(Category category) {
-        log.debug("saving category", kv("category", category));
-        log.info("saving category");
         return categoryRepository.save(category);
     }
 
@@ -36,9 +36,13 @@ public class CategoryServiceImpl implements CategoryService {
 
         Category updatedCategory = null;
         if (existingCategory.isPresent()) {
-            updatedCategory = categoryRepository.save(category);
+            try {
+                updatedCategory = categoryRepository.save(category);
+            } catch (DataIntegrityViolationException e) {
+                throw new CategoryConflictException("Category name already exists");
+            }
         } else {
-
+            throw new CategoryNotFoundException("Unable to find category to update");
         }
 
         return updatedCategory;
