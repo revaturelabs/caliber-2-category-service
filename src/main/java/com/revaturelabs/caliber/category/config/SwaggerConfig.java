@@ -34,7 +34,7 @@ public class SwaggerConfig {
       "",
       new Contact(
         "Revature",
-        "https://github.com/revaturelabs",
+        "https://github.com/revaturelabs/caliber-2-category-service/tree/dev",
         "cloud-ops@revature.com"
       ),
       "",
