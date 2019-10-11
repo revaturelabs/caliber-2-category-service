@@ -25,7 +25,7 @@
         <appender-ref ref="consoleAppender" />
     </logger>
 </springProfile>
-<springProfile name="dev,prd">
+<springProfile name="dev,prod">
     <appender name="rollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>category.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
@@ -37,9 +37,7 @@
         <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
     </appender>
     <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>%-4relative %-5level %logger - %msg %mdc%n</pattern>
-        </encoder>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
     </appender>
     <root level="DEBUG">
         <appender-ref ref="consoleAppender"/>
