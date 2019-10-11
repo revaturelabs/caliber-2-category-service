@@ -15,7 +15,7 @@
             <pattern>%-4relative %-5level %logger - %msg %mdc%n</pattern>
         </encoder>
     </appender>
-    <root level="DEBUG">
+    <root level="DEBU   G">
         <appender-ref ref="rollingFileAppender"/>
     </root>
     <logger name="org.springframework" level="INFO">
@@ -26,5 +26,29 @@
     </logger>
 </springProfile>
 <springProfile name="dev,prd">
+    <appender name="rollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>category.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>category-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>60</maxHistory>
+            <totalSizeCap>2GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+    </appender>
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%-4relative %-5level %logger - %msg %mdc%n</pattern>
+        </encoder>
+    </appender>
+    <root level="DEBUG">
+        <appender-ref ref="consoleAppender"/>
+    </root>
+    <logger name="org.springframework" level="INFO">
+        <appender-ref ref="consoleAppender" />
+    </logger>
+    <logger name="com.revaturelabs" level="DEBUG">
+        <appender-ref ref="consoleAppender" />
+    </logger>
 </springProfile>
 </configuration>

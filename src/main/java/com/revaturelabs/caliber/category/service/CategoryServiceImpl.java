@@ -4,18 +4,12 @@ import com.revaturelabs.caliber.category.domain.entity.Category;
 import com.revaturelabs.caliber.category.domain.repository.CategoryRepository;
 import com.revaturelabs.caliber.category.exception.CategoryConflictException;
 import com.revaturelabs.caliber.category.exception.CategoryNotFoundException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
-
-import static net.logstash.logback.argument.StructuredArguments.kv;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -25,6 +19,16 @@ public class CategoryServiceImpl implements CategoryService {
 
     public List<Category> getAll(){
        return categoryRepository.findAll();
+    }
+
+    public Category getById(int id) {
+        Optional<Category> category = categoryRepository.findById(id);
+
+        if(!category.isPresent()) {
+            throw new CategoryNotFoundException("Category not found");
+        }
+
+        return category.get();
     }
 
     public Category create(Category category) {
@@ -46,5 +50,26 @@ public class CategoryServiceImpl implements CategoryService {
         }
 
         return updatedCategory;
+    }
+
+    public Category createOrUpdate(Category category) {
+        Category updatedCategory = null;
+        try {
+            updatedCategory = categoryRepository.save(category);
+        } catch (DataIntegrityViolationException e) {
+            throw new CategoryConflictException("Category name already exists");
+        }
+
+        return updatedCategory;
+    }
+
+    public void delete(int id) {
+        boolean categoryExists = categoryRepository.existsById(id);
+
+        if (!categoryExists) {
+            throw new CategoryNotFoundException("Unable to find Category to delete");
+        }
+
+        categoryRepository.deleteById(id);
     }
 }

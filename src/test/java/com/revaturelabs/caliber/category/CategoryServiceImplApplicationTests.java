@@ -1,4 +1,4 @@
-package com.revature.categoryservice;
+package com.revaturelabs.caliber.category;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
