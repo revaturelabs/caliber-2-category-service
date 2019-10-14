@@ -1,6 +1,6 @@
-package com.revaturelabs.caliber.category.service;
+package com.revaturelabs.caliber.category;
 
-import com.revaturelabs.caliber.category.domain.entity.Category;
+import com.revaturelabs.caliber.category.Category;
 
 import java.util.List;
 

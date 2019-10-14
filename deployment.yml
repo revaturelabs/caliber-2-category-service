@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: category
-          image: gcr.io/caliber-dev-254513/category@sha256:7a77c23a25681282e9fc11ef16c91d26726ff1e331e05292f486b0069661ba87 
+          image: gcr.io/caliber-dev-254513/category@sha256:5c79d003e8e9a5f5952a4bd2e8239ad96e0c04b3e3a5e577b74452355bd09883 
           livenessProbe:
             failureThreshold: 3
             httpGet:

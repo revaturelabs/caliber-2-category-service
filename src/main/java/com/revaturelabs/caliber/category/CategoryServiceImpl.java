@@ -1,7 +1,5 @@
-package com.revaturelabs.caliber.category.service;
+package com.revaturelabs.caliber.category;
 
-import com.revaturelabs.caliber.category.domain.entity.Category;
-import com.revaturelabs.caliber.category.domain.repository.CategoryRepository;
 import com.revaturelabs.caliber.category.exception.CategoryConflictException;
 import com.revaturelabs.caliber.category.exception.CategoryNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

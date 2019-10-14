@@ -1,9 +1,7 @@
-package com.revaturelabs.caliber.category.controller;
+package com.revaturelabs.caliber.category;
 
-import com.revaturelabs.caliber.category.domain.entity.Category;
 import com.revaturelabs.caliber.category.exception.CategoryConflictException;
 import com.revaturelabs.caliber.category.exception.CategoryNotFoundException;
-import com.revaturelabs.caliber.category.service.CategoryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import javax.xml.ws.Response;
 import java.util.List;
 
 import static net.logstash.logback.argument.StructuredArguments.kv;
