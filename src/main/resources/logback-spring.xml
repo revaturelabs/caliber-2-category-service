@@ -15,10 +15,10 @@
             <pattern>%-4relative %-5level %logger - %msg %mdc%n</pattern>
         </encoder>
     </appender>
-    <root level="DEBU   G">
+    <root level="DEBUG">
         <appender-ref ref="rollingFileAppender"/>
     </root>
-    <logger name="org.springframework" level="INFO">
+    <logger name="org.springframework" level="DEBUG">
         <appender-ref ref="consoleAppender" />
     </logger>
     <logger name="com.revaturelabs" level="DEBUG">
@@ -42,7 +42,7 @@
     <root level="DEBUG">
         <appender-ref ref="consoleAppender"/>
     </root>
-    <logger name="org.springframework" level="INFO">
+    <logger name="org.springframework" level="DEBUG">
         <appender-ref ref="consoleAppender" />
     </logger>
     <logger name="com.revaturelabs" level="DEBUG">

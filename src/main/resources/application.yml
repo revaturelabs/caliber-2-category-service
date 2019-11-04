@@ -12,7 +12,7 @@ spring:
     password: password
 
 server:
-  port: 8080
+  port: 10000
   error:
     include-stacktrace: never
 ---
@@ -27,6 +27,14 @@ spring:
         enabled: false
       reload:
         enabled: false
+  security:
+    oauth2:
+
+      resourceserver:
+        jwt:
+          issuer-uri: https://localhost:9443/oauth2/token
+          jwk-set-uri: https://localhost:9443/oauth2/jwks
+
 ---
 spring:
   profiles:
