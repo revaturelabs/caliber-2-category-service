@@ -11,6 +11,7 @@ phases:
       - echo Logging in to Amazon ECR...
       - $(aws ecr get-login --no-include-email --region $AWS_REGION)
       - BUILD_ID=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c1-8)
+      - env
   build:
     commands:
       - echo Building Maven Project
