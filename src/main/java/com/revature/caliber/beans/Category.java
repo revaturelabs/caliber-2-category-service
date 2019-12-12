@@ -23,7 +23,7 @@ public class Category implements Serializable {
   @Column(name = "CATEGORY_ID")
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CATEGORY_ID_SEQUENCE")
   @SequenceGenerator(name = "CATEGORY_ID_SEQUENCE", sequenceName = "CATEGORY_ID_SEQUENCE")
-  private Integer categoryId;
+  private int categoryId;
 
   @Column(name = "SKILL_CATEGORY")
   private String skillCategory;
@@ -44,7 +44,7 @@ public class Category implements Serializable {
   }
 
 
-  public Category(Integer categoryId, String skillCategory, boolean isActive) {
+  public Category(int categoryId, String skillCategory, boolean isActive) {
     super();
     this.categoryId = categoryId;
     this.skillCategory = skillCategory;
@@ -52,12 +52,12 @@ public class Category implements Serializable {
   }
 
 
-  public Integer getCategoryId() {
+  public int getCategoryId() {
     return categoryId;
   }
 
 
-  public void setCategoryId(Integer categoryId) {
+  public void setCategoryId(int categoryId) {
     this.categoryId = categoryId;
   }
 
