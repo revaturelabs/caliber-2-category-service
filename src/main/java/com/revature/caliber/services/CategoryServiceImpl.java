@@ -78,13 +78,12 @@ public class CategoryServiceImpl implements CategoryService{
 	@Override
 	public Category updateCategory(Category c) throws DataIntegrityViolationException {
 		Category existing = cr.findOne(c.getCategoryId());
-		Category updatedCategory = null;
-
-		if(existing != null) {
-			updatedCategory = cr.save(c);
+		if (existing != null) {
+			existing.setActive(c.isActive());
+			existing.setSkillCategory(c.getSkillCategory());
 		}
-
-		return updatedCategory;
+		existing = cr.save(c);
+		return existing;
 	}
 
 
