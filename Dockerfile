@@ -18,7 +18,7 @@ ENV DB_PASS=$DB_PASS
 ENV CONFIG_URL=$CONFIG_URL
 ENV APM_SERVER_URL=$APM_SERVER_URL
 ENV APM_SECRET_TOKEN=$APM_SECRET_TOKEN
-ENV JAVA_OPTS="-javaagent:elastic-apm-agent.jar"
+ENV JAVA_OPTS="-javaagent:elastic-apm-agent.jar -Delastic.apm.server_url=$APM_SERVER_URL -Delastic.apm.secret_token=$APM_SECRET_TOKEN"
 COPY src/main/resources/ojdbc7.jar .
 RUN mvn install:install-file -Dfile=ojdbc7.jar -DgroupId=com.oracle -DartifactId=ojdbc7 -Dversion=12.1.0 -Dpackaging=jar
 COPY target/${JAR_FILE} app.jar
