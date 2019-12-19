@@ -118,13 +118,17 @@ public class CategoryController {
   @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
   @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
   public ResponseEntity<Category> updateCategory(@Valid @RequestBody Category c, @PathVariable int id) {
-    c.setCategoryId(id);
-    log.debug("Updating category: " + id);
-    Category category;
-    if (c == null) {
-      log.debug("No valid category to create: BAD REQUEST");
-      return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-    }
+	  Category category;
+	  
+	if (c == null) {
+	      log.debug("No valid category to create: BAD REQUEST");
+	      return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	} else {
+		c.setCategoryId(id);
+	    log.debug("Updating category: " + id);
+	}
+    
+   
 
     // Track if category was created or updated
     HttpStatus status;
